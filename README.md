@@ -8,6 +8,10 @@ Entry point: `index.html`
 
 One-page workflow: `one-pager-workflow.html`
 
+Original workflow filename: `workflow/credit_eligibility_bre_board_workflow.html`
+
+High-quality workflow PNG: `workflow/Uncia_Credit_Eligibility_BRE_Workflow_High_Quality_7200x9100.png`
+
 Link hub: `links.html`
 
 Naming convention used in the prototype:
