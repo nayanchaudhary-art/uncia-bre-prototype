@@ -8,7 +8,5 @@ Entry point: `index.html`
 
 Naming convention used in the prototype:
 
-Recommendation Tab > Sub Tabs:
-
-1. Extra Input Fields
-2. Recommendations & Deviations
+Recommendation Tab > Extra Input Fields Sub-Tab
+Recommendation Tab > Recommendations & Deviations Sub-Tab

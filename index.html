@@ -1855,7 +1855,7 @@
       <button class="sim-close" id="simClose" type="button">x</button>
     </div>
     <div class="sim-panel-body">
-      <div class="sim-intro">Simulator only. Use these three controls to demonstrate the Credit Eligibility BRE flow. Recommendation Tab > Sub Tabs: 1. Extra Input Fields 2. Recommendations &amp; Deviations. Description, remarks, stale-result checks, and Forward blockers are handled inside the normal page flow.</div>
+      <div class="sim-intro">Simulator only. Use these three controls to demonstrate the Credit Eligibility BRE flow. Recommendation Tab > Extra Input Fields Sub-Tab and Recommendation Tab > Recommendations &amp; Deviations Sub-Tab. Description, remarks, stale-result checks, and Forward blockers are handled inside the normal page flow.</div>
 
       <div class="sim-flow-step">
         <div class="sim-step-head">
@@ -2388,7 +2388,7 @@
     }
 
     function renderBreExtraFields() {
-      return panel("Recommendation Tab > Sub Tabs > 1. Extra Input Fields", `
+      return panel("Recommendation Tab > Extra Input Fields Sub-Tab", `
         <div class="extra-fields-page">
           ${renderStatusLine()}
           <div class="page-actions top-bre-actions">
@@ -2596,7 +2596,7 @@
       const showBreDeviations = isBreEligible && (state.bre.status === "deviated" || state.bre.status === "failed");
       const showPassed = isBreEligible && state.bre.status === "passed";
 
-      return panel("Recommendation Tab > Sub Tabs > 2. Recommendations & Deviations", `
+      return panel("Recommendation Tab > Recommendations & Deviations Sub-Tab", `
         ${isBreEligible ? renderStatusLine() : ""}
         ${state.bre.eligibility === "not_eligible" ? `<div class="message-box">This deal is not Credit Eligibility BRE eligible. BRE extra fields and BRE-identified deviations are hidden for this deal.</div>` : ""}
         ${state.bre.eligibility === "gate_error" ? `<div class="message-box warn">503 Service Unavailable - Credit Eligibility BRE eligibility check is currently unavailable due to a service issue. Please try again after some time.</div>` : ""}
