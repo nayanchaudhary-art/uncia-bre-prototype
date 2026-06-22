@@ -1,0 +1,470 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2600" height="1500" viewBox="0 0 2600 1500">
+<defs>
+<filter id="cardShadow" x="-8%" y="-8%" width="116%" height="125%"><feDropShadow dx="0" dy="7" stdDeviation="7" flood-color="#071b4d" flood-opacity="0.10"/></filter>
+<filter id="softShadow" x="-5%" y="-5%" width="110%" height="120%"><feDropShadow dx="0" dy="6" stdDeviation="8" flood-color="#17677c" flood-opacity="0.12"/></filter>
+<marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="10" markerHeight="10" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#0f58d6"/></marker>
+</defs>
+<rect width="2600" height="1500" fill="#fbfdff"/>
+<text x="1300" y="58" font-family="Arial" font-size="40" font-weight="800" fill="#071b4d" text-anchor="middle">
+<tspan x="1300" dy="0">CREDIT ELIGIBILITY BRE WORKFLOW</tspan>
+</text>
+<text x="1300" y="95" font-family="Arial" font-size="21" font-weight="800" fill="#071b4d" text-anchor="middle">
+<tspan x="1300" dy="0">Deal / Application level inside Uncia LOS - flow, UI changes, and Forward controls</tspan>
+</text>
+<rect x="90" y="118" width="2420" height="46" rx="16" ry="16" fill="#eef7ff" stroke="#d3e7f0" stroke-width="2" />
+<text x="1300" y="148" font-family="Arial" font-size="18" font-weight="800" fill="#17677c" text-anchor="middle">
+<tspan x="1300" dy="0">BRE eligibility is checked when the deal/application opens. If required, the Credit Eligibility BRE flow runs before Forward approval.</tspan>
+</text>
+<rect x="90" y="190" width="2420" height="1016" rx="22" ry="22" fill="#ffffff" stroke="#cfe3eb" stroke-width="2" filter="url(#softShadow)"/>
+<rect x="150" y="242" width="340" height="106" rx="16" ry="16" fill="#eef7ff" stroke="#d7e7ee" stroke-width="2" filter="url(#cardShadow)"/>
+<circle cx="184" cy="278" r="22" fill="#0f58d6" stroke="none" stroke-width="2"/>
+<text x="184" y="286" font-family="Arial" font-size="20" font-weight="800" fill="#ffffff" text-anchor="middle">
+<tspan x="184" dy="0">1</tspan>
+</text>
+<text x="222" y="272" font-family="Arial" font-size="18" font-weight="800" fill="#071b4d" text-anchor="start">
+<tspan x="222" dy="0">Deal / Application</tspan>
+<tspan x="222" dy="21">Opened</tspan>
+</text>
+<text x="222" y="318" font-family="Arial" font-size="14" font-weight="600" fill="#111827" text-anchor="start">
+<tspan x="222" dy="0">Trigger BRE eligibility service</tspan>
+</text>
+<text x="222" y="343" font-family="Arial" font-size="14" font-weight="600" fill="#111827" text-anchor="start">
+<tspan x="222" dy="0">No user action required</tspan>
+</text>
+<path d="M 490 295 L 585 295" fill="none" stroke="#0f58d6" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="500" y="292" width="57" height="7" rx="4" ry="4" fill="#0f58d6" stroke="#0f58d6" stroke-width="0" />
+<polygon points="557,280 575,295 557,310" fill="#0f58d6"/>
+<rect x="585" y="230" width="435" height="132" rx="16" ry="16" fill="#fff5de" stroke="#d7e7ee" stroke-width="2" filter="url(#cardShadow)"/>
+<circle cx="619" cy="266" r="22" fill="#ff7a00" stroke="none" stroke-width="2"/>
+<text x="619" y="274" font-family="Arial" font-size="20" font-weight="800" fill="#ffffff" text-anchor="middle">
+<tspan x="619" dy="0">2</tspan>
+</text>
+<text x="657" y="260" font-family="Arial" font-size="18" font-weight="800" fill="#071b4d" text-anchor="start">
+<tspan x="657" dy="0">Check BRE Eligibility</tspan>
+</text>
+<text x="657" y="285" font-family="Arial" font-size="14" font-weight="600" fill="#111827" text-anchor="start">
+<tspan x="657" dy="0">TRUE: BRE Required</tspan>
+</text>
+<text x="657" y="310" font-family="Arial" font-size="14" font-weight="600" fill="#111827" text-anchor="start">
+<tspan x="657" dy="0">FALSE: BRE Not Required</tspan>
+</text>
+<text x="657" y="335" font-family="Arial" font-size="14" font-weight="600" fill="#111827" text-anchor="start">
+<tspan x="657" dy="0">Error: block Forward with 503</tspan>
+</text>
+<path d="M 805 362 L 805 410 L 350 410 L 350 452" fill="none" stroke="#0f58d6" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="802" y="362" width="7" height="48" rx="4" ry="4" fill="#0f58d6" stroke="#0f58d6" stroke-width="0" />
+<rect x="350" y="407" width="455" height="7" rx="4" ry="4" fill="#0f58d6" stroke="#0f58d6" stroke-width="0" />
+<rect x="347" y="410" width="7" height="24" rx="4" ry="4" fill="#0f58d6" stroke="#0f58d6" stroke-width="0" />
+<polygon points="335,434 350,452 365,434" fill="#0f58d6"/>
+<rect x="202" y="390" width="210" height="34" rx="17" ry="17" fill="#ffffff" stroke="#159447" stroke-width="2" />
+<text x="307" y="413" font-family="Arial" font-size="15" font-weight="800" fill="#159447" text-anchor="middle">
+<tspan x="307" dy="0">TRUE - BRE Required</tspan>
+</text>
+<rect x="130" y="452" width="940" height="52" rx="16" ry="16" fill="#159447" stroke="#159447" stroke-width="0" />
+<circle cx="164" cy="478" r="22" fill="#ffffff" stroke="none" stroke-width="2"/>
+<text x="164" y="486" font-family="Arial" font-size="20" font-weight="800" fill="#159447" text-anchor="middle">
+<tspan x="164" dy="0">A</tspan>
+</text>
+<text x="200" y="485" font-family="Arial" font-size="19" font-weight="800" fill="#ffffff" text-anchor="start">
+<tspan x="200" dy="0">BRE Required Journey</tspan>
+</text>
+<rect x="160" y="526" width="390" height="136" rx="16" ry="16" fill="#ffffff" stroke="#d7e7ee" stroke-width="2" filter="url(#cardShadow)"/>
+<circle cx="194" cy="562" r="22" fill="#17677c" stroke="none" stroke-width="2"/>
+<text x="194" y="570" font-family="Arial" font-size="20" font-weight="800" fill="#ffffff" text-anchor="middle">
+<tspan x="194" dy="0">3</tspan>
+</text>
+<text x="232" y="548" font-family="Arial" font-size="17" font-weight="800" fill="#071b4d" text-anchor="start">
+<tspan x="232" dy="0">Recommendation Tab &gt;</tspan>
+<tspan x="232" dy="20">Extra Input Fields Sub-Tab</tspan>
+</text>
+<text x="232" y="604" font-family="Arial" font-size="14" font-weight="600" fill="#111827" text-anchor="start">
+<tspan x="232" dy="0">Captures BRE inputs not in LOS</tspan>
+</text>
+<text x="232" y="631" font-family="Arial" font-size="14" font-weight="600" fill="#111827" text-anchor="start">
+<tspan x="232" dy="0">Dynamic by product, sub-product,</tspan>
+<tspan x="232" dy="18">constitution, party count</tspan>
+</text>
+<path d="M 550 594 L 650 594" fill="none" stroke="#0f58d6" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="560" y="591" width="62" height="7" rx="4" ry="4" fill="#0f58d6" stroke="#0f58d6" stroke-width="0" />
+<polygon points="622,579 640,594 622,609" fill="#0f58d6"/>
+<rect x="650" y="526" width="330" height="136" rx="16" ry="16" fill="#fff5de" stroke="#d7e7ee" stroke-width="2" filter="url(#cardShadow)"/>
+<circle cx="684" cy="562" r="22" fill="#ff7a00" stroke="none" stroke-width="2"/>
+<text x="684" y="570" font-family="Arial" font-size="20" font-weight="800" fill="#ffffff" text-anchor="middle">
+<tspan x="684" dy="0">4</tspan>
+</text>
+<text x="722" y="556" font-family="Arial" font-size="18" font-weight="800" fill="#071b4d" text-anchor="start">
+<tspan x="722" dy="0">Save / Validate Inputs</tspan>
+</text>
+<text x="722" y="581" font-family="Arial" font-size="14" font-weight="600" fill="#111827" text-anchor="start">
+<tspan x="722" dy="0">Save current values</tspan>
+</text>
+<text x="722" y="606" font-family="Arial" font-size="14" font-weight="600" fill="#111827" text-anchor="start">
+<tspan x="722" dy="0">Validate mandatory BRE fields</tspan>
+</text>
+<text x="722" y="631" font-family="Arial" font-size="14" font-weight="600" fill="#111827" text-anchor="start">
+<tspan x="722" dy="0">Missing inputs open popup</tspan>
+</text>
+<path d="M 980 594 L 1050 594 L 1050 690 L 855 690 L 855 662" fill="none" stroke="#ff7a00" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="10 8"/>
+<rect x="980" y="592" width="50" height="5" rx="4" ry="4" fill="#ff7a00" stroke="#ff7a00" stroke-width="0" />
+<polygon points="1030,579 1048,594 1030,609" fill="#ff7a00"/>
+<rect x="1048" y="594" width="5" height="96" rx="4" ry="4" fill="#ff7a00" stroke="#ff7a00" stroke-width="0" />
+<rect x="855" y="688" width="195" height="5" rx="4" ry="4" fill="#ff7a00" stroke="#ff7a00" stroke-width="0" />
+<rect x="853" y="680" width="5" height="10" rx="4" ry="4" fill="#ff7a00" stroke="#ff7a00" stroke-width="0" />
+<polygon points="840,680 855,662 870,680" fill="#ff7a00"/>
+<rect x="1010" y="617" width="255" height="72" rx="16" ry="16" fill="#fff5de" stroke="#ff7a00" stroke-width="2" />
+<text x="1138" y="645" font-family="Arial" font-size="18" font-weight="800" fill="#ff7a00" text-anchor="middle">
+<tspan x="1138" dy="0">Validation Popup</tspan>
+</text>
+<text x="1138" y="669" font-family="Arial" font-size="13" font-weight="700" fill="#111827" text-anchor="middle">
+<tspan x="1138" dy="0">Large missing-field list</tspan>
+</text>
+<path d="M 815 662 L 815 730" fill="none" stroke="#0f58d6" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="812" y="662" width="7" height="50" rx="4" ry="4" fill="#0f58d6" stroke="#0f58d6" stroke-width="0" />
+<polygon points="800,712 815,730 830,712" fill="#0f58d6"/>
+<rect x="650" y="730" width="330" height="108" rx="16" ry="16" fill="#ffffff" stroke="#d7e7ee" stroke-width="2" filter="url(#cardShadow)"/>
+<circle cx="684" cy="766" r="22" fill="#17677c" stroke="none" stroke-width="2"/>
+<text x="684" y="774" font-family="Arial" font-size="20" font-weight="800" fill="#ffffff" text-anchor="middle">
+<tspan x="684" dy="0">5</tspan>
+</text>
+<text x="722" y="760" font-family="Arial" font-size="18" font-weight="800" fill="#071b4d" text-anchor="start">
+<tspan x="722" dy="0">Run Credit Eligibility</tspan>
+<tspan x="722" dy="21">BRE</tspan>
+</text>
+<text x="722" y="806" font-family="Arial" font-size="14" font-weight="600" fill="#111827" text-anchor="start">
+<tspan x="722" dy="0">Send LOS fields + saved extra</tspan>
+<tspan x="722" dy="18">inputs to Weaver / BRE</tspan>
+</text>
+<text x="722" y="849" font-family="Arial" font-size="14" font-weight="600" fill="#111827" text-anchor="start">
+<tspan x="722" dy="0">Persist run status and</tspan>
+<tspan x="722" dy="18">timestamp</tspan>
+</text>
+<path d="M 815 838 L 815 890" fill="none" stroke="#0f58d6" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="812" y="838" width="7" height="34" rx="4" ry="4" fill="#0f58d6" stroke="#0f58d6" stroke-width="0" />
+<polygon points="800,872 815,890 830,872" fill="#0f58d6"/>
+<rect x="620" y="890" width="390" height="118" rx="16" ry="16" fill="#fff5de" stroke="#d7e7ee" stroke-width="2" filter="url(#cardShadow)"/>
+<circle cx="654" cy="926" r="22" fill="#ff7a00" stroke="none" stroke-width="2"/>
+<text x="654" y="934" font-family="Arial" font-size="20" font-weight="800" fill="#ffffff" text-anchor="middle">
+<tspan x="654" dy="0">6</tspan>
+</text>
+<text x="692" y="920" font-family="Arial" font-size="18" font-weight="800" fill="#071b4d" text-anchor="start">
+<tspan x="692" dy="0">BRE Result Received</tspan>
+</text>
+<text x="692" y="945" font-family="Arial" font-size="14" font-weight="600" fill="#111827" text-anchor="start">
+<tspan x="692" dy="0">Passed / Deviated / Failed</tspan>
+</text>
+<text x="692" y="970" font-family="Arial" font-size="14" font-weight="600" fill="#111827" text-anchor="start">
+<tspan x="692" dy="0">Show result popup with route-back CTA</tspan>
+</text>
+<path d="M 1020 296 L 1370 296 L 1370 452" fill="none" stroke="#0f58d6" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="1020" y="293" width="350" height="7" rx="4" ry="4" fill="#0f58d6" stroke="#0f58d6" stroke-width="0" />
+<rect x="1367" y="296" width="7" height="138" rx="4" ry="4" fill="#0f58d6" stroke="#0f58d6" stroke-width="0" />
+<polygon points="1355,434 1370,452 1385,434" fill="#0f58d6"/>
+<rect x="1232" y="278" width="232" height="34" rx="17" ry="17" fill="#ffffff" stroke="#66737f" stroke-width="2" />
+<text x="1348" y="301" font-family="Arial" font-size="15" font-weight="800" fill="#66737f" text-anchor="middle">
+<tspan x="1348" dy="0">FALSE - BRE Not Required</tspan>
+</text>
+<rect x="1180" y="452" width="540" height="52" rx="16" ry="16" fill="#66737f" stroke="#66737f" stroke-width="0" />
+<circle cx="1214" cy="478" r="22" fill="#ffffff" stroke="none" stroke-width="2"/>
+<text x="1214" y="486" font-family="Arial" font-size="20" font-weight="800" fill="#66737f" text-anchor="middle">
+<tspan x="1214" dy="0">B</tspan>
+</text>
+<text x="1250" y="485" font-family="Arial" font-size="19" font-weight="800" fill="#ffffff" text-anchor="start">
+<tspan x="1250" dy="0">BRE Not Required Path</tspan>
+</text>
+<rect x="1210" y="526" width="480" height="118" rx="16" ry="16" fill="#f3f6f8" stroke="#d7e7ee" stroke-width="2" filter="url(#cardShadow)"/>
+<circle cx="1244" cy="562" r="22" fill="#66737f" stroke="none" stroke-width="2"/>
+<text x="1244" y="570" font-family="Arial" font-size="20" font-weight="800" fill="#ffffff" text-anchor="middle">
+<tspan x="1244" dy="0">3F</tspan>
+</text>
+<text x="1282" y="556" font-family="Arial" font-size="18" font-weight="800" fill="#071b4d" text-anchor="start">
+<tspan x="1282" dy="0">Continue Existing LOS Flow</tspan>
+</text>
+<text x="1282" y="581" font-family="Arial" font-size="14" font-weight="600" fill="#111827" text-anchor="start">
+<tspan x="1282" dy="0">No Extra Input Fields Sub-Tab</tspan>
+</text>
+<text x="1282" y="606" font-family="Arial" font-size="14" font-weight="600" fill="#111827" text-anchor="start">
+<tspan x="1282" dy="0">No BRE result context</tspan>
+</text>
+<text x="1282" y="631" font-family="Arial" font-size="14" font-weight="600" fill="#111827" text-anchor="start">
+<tspan x="1282" dy="0">Existing LOS recommendation fields continue</tspan>
+</text>
+<path d="M 1450 644 L 1450 704" fill="none" stroke="#0f58d6" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="1447" y="644" width="7" height="42" rx="4" ry="4" fill="#0f58d6" stroke="#0f58d6" stroke-width="0" />
+<polygon points="1435,686 1450,704 1465,686" fill="#0f58d6"/>
+<rect x="1210" y="704" width="480" height="180" rx="16" ry="16" fill="#ffffff" stroke="#d7e7ee" stroke-width="2" filter="url(#cardShadow)"/>
+<circle cx="1244" cy="740" r="22" fill="#66737f" stroke="none" stroke-width="2"/>
+<text x="1244" y="748" font-family="Arial" font-size="20" font-weight="800" fill="#ffffff" text-anchor="middle">
+<tspan x="1244" dy="0">4F</tspan>
+</text>
+<text x="1282" y="726" font-family="Arial" font-size="17" font-weight="800" fill="#071b4d" text-anchor="start">
+<tspan x="1282" dy="0">Recommendation Tab &gt;</tspan>
+<tspan x="1282" dy="20">Recommendations &amp; Deviations Sub-Tab</tspan>
+</text>
+<text x="1282" y="775" font-family="Arial" font-size="14" font-weight="600" fill="#111827" text-anchor="start">
+<tspan x="1282" dy="0">BRE Eligibility = False</tspan>
+</text>
+<text x="1282" y="800" font-family="Arial" font-size="14" font-weight="600" fill="#111827" text-anchor="start">
+<tspan x="1282" dy="0">Show existing recommendation content</tspan>
+</text>
+<text x="1282" y="825" font-family="Arial" font-size="14" font-weight="600" fill="#111827" text-anchor="start">
+<tspan x="1282" dy="0">Show Manual Deviation</tspan>
+</text>
+<text x="1282" y="850" font-family="Arial" font-size="14" font-weight="600" fill="#111827" text-anchor="start">
+<tspan x="1282" dy="0">Show Auto Deviations</tspan>
+</text>
+<text x="1282" y="875" font-family="Arial" font-size="14" font-weight="600" fill="#111827" text-anchor="start">
+<tspan x="1282" dy="0">Do not show Failed Rules or</tspan>
+<tspan x="1282" dy="18">BRE-identified Deviations</tspan>
+</text>
+<rect x="1760" y="452" width="690" height="52" rx="16" ry="16" fill="#17677c" stroke="#17677c" stroke-width="0" />
+<circle cx="1794" cy="478" r="22" fill="#ffffff" stroke="none" stroke-width="2"/>
+<text x="1794" y="486" font-family="Arial" font-size="20" font-weight="800" fill="#17677c" text-anchor="middle">
+<tspan x="1794" dy="0">C</tspan>
+</text>
+<text x="1830" y="485" font-family="Arial" font-size="19" font-weight="800" fill="#ffffff" text-anchor="start">
+<tspan x="1830" dy="0">Recommendation Tab &gt; Recommendations &amp; Deviations Sub-Tab</tspan>
+</text>
+<path d="M 1010 948 L 1650 948 L 1650 585 L 1768 585" fill="none" stroke="#0f58d6" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="1010" y="945" width="640" height="7" rx="4" ry="4" fill="#0f58d6" stroke="#0f58d6" stroke-width="0" />
+<rect x="1647" y="585" width="7" height="363" rx="4" ry="4" fill="#0f58d6" stroke="#0f58d6" stroke-width="0" />
+<rect x="1650" y="582" width="100" height="7" rx="4" ry="4" fill="#0f58d6" stroke="#0f58d6" stroke-width="0" />
+<polygon points="1750,570 1768,585 1750,600" fill="#0f58d6"/>
+<rect x="1295" y="912" width="226" height="32" rx="16" ry="16" fill="#eef7ff" stroke="#0f58d6" stroke-width="2" />
+<text x="1408" y="934" font-family="Arial" font-size="14" font-weight="800" fill="#0f58d6" text-anchor="middle">
+<tspan x="1408" dy="0">BRE result routes here</tspan>
+</text>
+<rect x="1768" y="526" width="245" height="78" rx="16" ry="16" fill="#eaf7ea" stroke="#159447" stroke-width="2" />
+<text x="1890" y="556" font-family="Arial" font-size="19" font-weight="800" fill="#159447" text-anchor="middle">
+<tspan x="1890" dy="0">Passed</tspan>
+</text>
+<text x="1890" y="582" font-family="Arial" font-size="13" font-weight="700" fill="#111827" text-anchor="middle">
+<tspan x="1890" dy="0">No BRE deviations; Manual</tspan>
+<tspan x="1890" dy="15">Deviation optional</tspan>
+</text>
+<rect x="2020" y="526" width="245" height="78" rx="16" ry="16" fill="#fff5de" stroke="#ff7a00" stroke-width="2" />
+<text x="2142" y="556" font-family="Arial" font-size="19" font-weight="800" fill="#ff7a00" text-anchor="middle">
+<tspan x="2142" dy="0">Deviated</tspan>
+</text>
+<text x="2142" y="582" font-family="Arial" font-size="13" font-weight="700" fill="#111827" text-anchor="middle">
+<tspan x="2142" dy="0">BRE deviations require</tspan>
+<tspan x="2142" dy="15">description / remarks</tspan>
+</text>
+<rect x="2272" y="526" width="245" height="78" rx="16" ry="16" fill="#fdebed" stroke="#e53636" stroke-width="2" />
+<text x="2394" y="556" font-family="Arial" font-size="19" font-weight="800" fill="#e53636" text-anchor="middle">
+<tspan x="2394" dy="0">Failed</tspan>
+</text>
+<text x="2394" y="582" font-family="Arial" font-size="13" font-weight="700" fill="#111827" text-anchor="middle">
+<tspan x="2394" dy="0">Failed Rules shown; Forward</tspan>
+<tspan x="2394" dy="15">blocked</tspan>
+</text>
+<rect x="1768" y="636" width="320" height="162" rx="16" ry="16" fill="#fdebed" stroke="#d7e7ee" stroke-width="2" filter="url(#cardShadow)"/>
+<circle cx="1802" cy="672" r="22" fill="#e53636" stroke="none" stroke-width="2"/>
+<text x="1802" y="680" font-family="Arial" font-size="20" font-weight="800" fill="#ffffff" text-anchor="middle">
+<tspan x="1802" dy="0">7A</tspan>
+</text>
+<text x="1840" y="666" font-family="Arial" font-size="18" font-weight="800" fill="#071b4d" text-anchor="start">
+<tspan x="1840" dy="0">Failed Rules</tspan>
+</text>
+<text x="1840" y="691" font-family="Arial" font-size="14" font-weight="600" fill="#111827" text-anchor="start">
+<tspan x="1840" dy="0">Show only if returned by BRE</tspan>
+</text>
+<text x="1840" y="716" font-family="Arial" font-size="14" font-weight="600" fill="#111827" text-anchor="start">
+<tspan x="1840" dy="0">Read-only table</tspan>
+</text>
+<text x="1840" y="741" font-family="Arial" font-size="14" font-weight="600" fill="#111827" text-anchor="start">
+<tspan x="1840" dy="0">Block, Rule Name, Failure</tspan>
+<tspan x="1840" dy="18">reason</tspan>
+</text>
+<rect x="2116" y="636" width="320" height="162" rx="16" ry="16" fill="#fff5de" stroke="#d7e7ee" stroke-width="2" filter="url(#cardShadow)"/>
+<circle cx="2150" cy="672" r="22" fill="#ff7a00" stroke="none" stroke-width="2"/>
+<text x="2150" y="680" font-family="Arial" font-size="20" font-weight="800" fill="#ffffff" text-anchor="middle">
+<tspan x="2150" dy="0">7B</tspan>
+</text>
+<text x="2188" y="666" font-family="Arial" font-size="18" font-weight="800" fill="#071b4d" text-anchor="start">
+<tspan x="2188" dy="0">BRE-identified</tspan>
+<tspan x="2188" dy="21">Deviations</tspan>
+</text>
+<text x="2188" y="712" font-family="Arial" font-size="14" font-weight="600" fill="#111827" text-anchor="start">
+<tspan x="2188" dy="0">Auto-populated from BRE</tspan>
+</text>
+<text x="2188" y="737" font-family="Arial" font-size="14" font-weight="600" fill="#111827" text-anchor="start">
+<tspan x="2188" dy="0">Frozen except description /</tspan>
+<tspan x="2188" dy="18">remarks</tspan>
+</text>
+<text x="2188" y="780" font-family="Arial" font-size="14" font-weight="600" fill="#111827" text-anchor="start">
+<tspan x="2188" dy="0">Separate from Manual Deviation</tspan>
+</text>
+<rect x="1768" y="826" width="668" height="116" rx="16" ry="16" fill="#ffffff" stroke="#d7e7ee" stroke-width="2" filter="url(#cardShadow)"/>
+<circle cx="1802" cy="862" r="22" fill="#17677c" stroke="none" stroke-width="2"/>
+<text x="1802" y="870" font-family="Arial" font-size="20" font-weight="800" fill="#ffffff" text-anchor="middle">
+<tspan x="1802" dy="0">7C</tspan>
+</text>
+<text x="1840" y="856" font-family="Arial" font-size="18" font-weight="800" fill="#071b4d" text-anchor="start">
+<tspan x="1840" dy="0">Manual Deviation remains existing Uncia section</tspan>
+</text>
+<text x="1840" y="881" font-family="Arial" font-size="14" font-weight="600" fill="#111827" text-anchor="start">
+<tspan x="1840" dy="0">User-selected manual deviation</tspan>
+</text>
+<text x="1840" y="906" font-family="Arial" font-size="14" font-weight="600" fill="#111827" text-anchor="start">
+<tspan x="1840" dy="0">Manual Deviation Level updates from existing field</tspan>
+</text>
+<text x="1840" y="931" font-family="Arial" font-size="14" font-weight="600" fill="#111827" text-anchor="start">
+<tspan x="1840" dy="0">Auto Deviations are not shown when BRE=True</tspan>
+</text>
+<path d="M 2102 942 L 2102 1038 L 1480 1038" fill="none" stroke="#0f58d6" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 1450 884 L 1450 1038 L 1300 1038" fill="none" stroke="#66737f" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="2099" y="942" width="7" height="96" rx="4" ry="4" fill="#0f58d6" stroke="#0f58d6" stroke-width="0" />
+<rect x="1480" y="1035" width="622" height="7" rx="4" ry="4" fill="#0f58d6" stroke="#0f58d6" stroke-width="0" />
+<rect x="1448" y="884" width="5" height="154" rx="4" ry="4" fill="#66737f" stroke="#66737f" stroke-width="0" />
+<rect x="1300" y="1036" width="150" height="5" rx="4" ry="4" fill="#66737f" stroke="#66737f" stroke-width="0" />
+<rect x="1120" y="1012" width="360" height="84" rx="16" ry="16" fill="#eef7ff" stroke="#d7e7ee" stroke-width="2" filter="url(#cardShadow)"/>
+<circle cx="1154" cy="1048" r="22" fill="#0f58d6" stroke="none" stroke-width="2"/>
+<text x="1154" y="1056" font-family="Arial" font-size="20" font-weight="800" fill="#ffffff" text-anchor="middle">
+<tspan x="1154" dy="0">8</tspan>
+</text>
+<text x="1192" y="1042" font-family="Arial" font-size="18" font-weight="800" fill="#071b4d" text-anchor="start">
+<tspan x="1192" dy="0">User Clicks Forward</tspan>
+</text>
+<text x="1192" y="1067" font-family="Arial" font-size="14" font-weight="600" fill="#111827" text-anchor="start">
+<tspan x="1192" dy="0">All paths converge here</tspan>
+</text>
+<path d="M 1300 1096 L 1300 1132" fill="none" stroke="#0f58d6" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="1297" y="1096" width="7" height="18" rx="4" ry="4" fill="#0f58d6" stroke="#0f58d6" stroke-width="0" />
+<polygon points="1285,1114 1300,1132 1315,1114" fill="#0f58d6"/>
+<rect x="90" y="1228" width="2420" height="154" rx="20" ry="20" fill="#ffffff" stroke="#cfe3eb" stroke-width="2" filter="url(#softShadow)"/>
+<rect x="112" y="1248" width="425" height="52" rx="16" ry="16" fill="#6240b8" stroke="#6240b8" stroke-width="0" />
+<circle cx="146" cy="1274" r="22" fill="#ffffff" stroke="none" stroke-width="2"/>
+<text x="146" y="1282" font-family="Arial" font-size="20" font-weight="800" fill="#6240b8" text-anchor="middle">
+<tspan x="146" dy="0">D</tspan>
+</text>
+<text x="182" y="1281" font-family="Arial" font-size="19" font-weight="800" fill="#ffffff" text-anchor="start">
+<tspan x="182" dy="0">Forward Decision Sequence</tspan>
+</text>
+<rect x="575" y="1260" width="255" height="72" rx="14" ry="14" fill="#fff5de" stroke="#ff7a00" stroke-width="2" />
+<text x="702" y="1287" font-family="Arial" font-size="14" font-weight="800" fill="#ff7a00" text-anchor="middle">
+<tspan x="702" dy="0">BRE required?</tspan>
+</text>
+<text x="702" y="1312" font-family="Arial" font-size="12" font-weight="700" fill="#111827" text-anchor="middle">
+<tspan x="702" dy="0">No -&gt; LOS checks</tspan>
+</text>
+<path d="M 830 1296 L 865 1296" fill="none" stroke="#0f58d6" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="830" y="1294" width="17" height="5" rx="4" ry="4" fill="#0f58d6" stroke="#0f58d6" stroke-width="0" />
+<polygon points="847,1281 865,1296 847,1311" fill="#0f58d6"/>
+<rect x="865" y="1260" width="255" height="72" rx="14" ry="14" fill="#fdebed" stroke="#e53636" stroke-width="2" />
+<text x="992" y="1287" font-family="Arial" font-size="14" font-weight="800" fill="#e53636" text-anchor="middle">
+<tspan x="992" dy="0">BRE service available?</tspan>
+</text>
+<text x="992" y="1312" font-family="Arial" font-size="12" font-weight="700" fill="#111827" text-anchor="middle">
+<tspan x="992" dy="0">No -&gt; 503</tspan>
+</text>
+<path d="M 1120 1296 L 1155 1296" fill="none" stroke="#0f58d6" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="1120" y="1294" width="17" height="5" rx="4" ry="4" fill="#0f58d6" stroke="#0f58d6" stroke-width="0" />
+<polygon points="1137,1281 1155,1296 1137,1311" fill="#0f58d6"/>
+<rect x="1155" y="1260" width="255" height="72" rx="14" ry="14" fill="#fff5de" stroke="#ff7a00" stroke-width="2" />
+<text x="1282" y="1287" font-family="Arial" font-size="14" font-weight="800" fill="#ff7a00" text-anchor="middle">
+<tspan x="1282" dy="0">BRE run?</tspan>
+</text>
+<text x="1282" y="1312" font-family="Arial" font-size="12" font-weight="700" fill="#111827" text-anchor="middle">
+<tspan x="1282" dy="0">No -&gt; Run BRE</tspan>
+</text>
+<path d="M 1410 1296 L 1445 1296" fill="none" stroke="#0f58d6" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="1410" y="1294" width="17" height="5" rx="4" ry="4" fill="#0f58d6" stroke="#0f58d6" stroke-width="0" />
+<polygon points="1427,1281 1445,1296 1427,1311" fill="#0f58d6"/>
+<rect x="1445" y="1260" width="255" height="72" rx="14" ry="14" fill="#fff5de" stroke="#ff7a00" stroke-width="2" />
+<text x="1572" y="1287" font-family="Arial" font-size="14" font-weight="800" fill="#ff7a00" text-anchor="middle">
+<tspan x="1572" dy="0">Result current?</tspan>
+</text>
+<text x="1572" y="1312" font-family="Arial" font-size="12" font-weight="700" fill="#111827" text-anchor="middle">
+<tspan x="1572" dy="0">No -&gt; Re-run</tspan>
+</text>
+<path d="M 1700 1296 L 1735 1296" fill="none" stroke="#0f58d6" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="1700" y="1294" width="17" height="5" rx="4" ry="4" fill="#0f58d6" stroke="#0f58d6" stroke-width="0" />
+<polygon points="1717,1281 1735,1296 1717,1311" fill="#0f58d6"/>
+<rect x="1735" y="1260" width="255" height="72" rx="14" ry="14" fill="#fdebed" stroke="#e53636" stroke-width="2" />
+<text x="1862" y="1287" font-family="Arial" font-size="14" font-weight="800" fill="#e53636" text-anchor="middle">
+<tspan x="1862" dy="0">Outcome failed?</tspan>
+</text>
+<text x="1862" y="1312" font-family="Arial" font-size="12" font-weight="700" fill="#111827" text-anchor="middle">
+<tspan x="1862" dy="0">Yes -&gt; Failed Rules</tspan>
+</text>
+<path d="M 1990 1296 L 2025 1296" fill="none" stroke="#0f58d6" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="1990" y="1294" width="17" height="5" rx="4" ry="4" fill="#0f58d6" stroke="#0f58d6" stroke-width="0" />
+<polygon points="2007,1281 2025,1296 2007,1311" fill="#0f58d6"/>
+<rect x="2025" y="1260" width="255" height="72" rx="14" ry="14" fill="#fff5de" stroke="#ff7a00" stroke-width="2" />
+<text x="2152" y="1287" font-family="Arial" font-size="14" font-weight="800" fill="#ff7a00" text-anchor="middle">
+<tspan x="2152" dy="0">Deviation details complete?</tspan>
+</text>
+<text x="2152" y="1312" font-family="Arial" font-size="12" font-weight="700" fill="#111827" text-anchor="middle">
+<tspan x="2152" dy="0">No -&gt; Deviations</tspan>
+</text>
+<path d="M 2280 1296 L 2315 1296" fill="none" stroke="#0f58d6" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="2280" y="1294" width="17" height="5" rx="4" ry="4" fill="#0f58d6" stroke="#0f58d6" stroke-width="0" />
+<polygon points="2297,1281 2315,1296 2297,1311" fill="#0f58d6"/>
+<rect x="2315" y="1260" width="255" height="72" rx="14" ry="14" fill="#eaf7ea" stroke="#159447" stroke-width="2" />
+<text x="2442" y="1287" font-family="Arial" font-size="14" font-weight="800" fill="#159447" text-anchor="middle">
+<tspan x="2442" dy="0">All clear</tspan>
+</text>
+<text x="2442" y="1312" font-family="Arial" font-size="12" font-weight="700" fill="#111827" text-anchor="middle">
+<tspan x="2442" dy="0">Send CAM Sheet</tspan>
+</text>
+<rect x="90" y="1400" width="2420" height="74" rx="18" ry="18" fill="#ffffff" stroke="#cfe3eb" stroke-width="2" />
+<rect x="112" y="1413" width="160" height="48" rx="10" ry="10" fill="#071b4d" stroke="#071b4d" stroke-width="0" />
+<text x="192" y="1444" font-family="Arial" font-size="18" font-weight="800" fill="#ffffff" text-anchor="middle">
+<tspan x="192" dy="0">KEY</tspan>
+</text>
+<rect x="310" y="1410" width="410" height="74" rx="14" ry="14" fill="#ffffff" stroke="#d8e7ee" stroke-width="2" />
+<circle cx="344" cy="1447" r="22" fill="#17677c" stroke="none" stroke-width="2"/>
+<text x="344" y="1455" font-family="Arial" font-size="20" font-weight="800" fill="#ffffff" text-anchor="middle">
+<tspan x="344" dy="0">✓</tspan>
+</text>
+<text x="384" y="1438" font-family="Arial" font-size="15" font-weight="800" fill="#071b4d" text-anchor="start">
+<tspan x="384" dy="0">Extra Input Fields Sub-Tab</tspan>
+</text>
+<text x="384" y="1461" font-family="Arial" font-size="12" font-weight="600" fill="#111827" text-anchor="start">
+<tspan x="384" dy="0">Recommendation Tab placement</tspan>
+</text>
+<rect x="742" y="1410" width="410" height="74" rx="14" ry="14" fill="#ffffff" stroke="#d8e7ee" stroke-width="2" />
+<circle cx="776" cy="1447" r="22" fill="#ff7a00" stroke="none" stroke-width="2"/>
+<text x="776" y="1455" font-family="Arial" font-size="20" font-weight="800" fill="#ffffff" text-anchor="middle">
+<tspan x="776" dy="0">✓</tspan>
+</text>
+<text x="816" y="1438" font-family="Arial" font-size="15" font-weight="800" fill="#071b4d" text-anchor="start">
+<tspan x="816" dy="0">Validation Popup</tspan>
+</text>
+<text x="816" y="1461" font-family="Arial" font-size="12" font-weight="600" fill="#111827" text-anchor="start">
+<tspan x="816" dy="0">mandatory fields from Weaver</tspan>
+</text>
+<rect x="1174" y="1410" width="410" height="74" rx="14" ry="14" fill="#ffffff" stroke="#d8e7ee" stroke-width="2" />
+<circle cx="1208" cy="1447" r="22" fill="#6240b8" stroke="none" stroke-width="2"/>
+<text x="1208" y="1455" font-family="Arial" font-size="20" font-weight="800" fill="#ffffff" text-anchor="middle">
+<tspan x="1208" dy="0">✓</tspan>
+</text>
+<text x="1248" y="1438" font-family="Arial" font-size="15" font-weight="800" fill="#071b4d" text-anchor="start">
+<tspan x="1248" dy="0">BRE Deviations</tspan>
+</text>
+<text x="1248" y="1461" font-family="Arial" font-size="12" font-weight="600" fill="#111827" text-anchor="start">
+<tspan x="1248" dy="0">system-generated, separate</tspan>
+</text>
+<rect x="1606" y="1410" width="410" height="74" rx="14" ry="14" fill="#ffffff" stroke="#d8e7ee" stroke-width="2" />
+<circle cx="1640" cy="1447" r="22" fill="#e53636" stroke="none" stroke-width="2"/>
+<text x="1640" y="1455" font-family="Arial" font-size="20" font-weight="800" fill="#ffffff" text-anchor="middle">
+<tspan x="1640" dy="0">✓</tspan>
+</text>
+<text x="1680" y="1438" font-family="Arial" font-size="15" font-weight="800" fill="#071b4d" text-anchor="start">
+<tspan x="1680" dy="0">Failed Rules</tspan>
+</text>
+<text x="1680" y="1461" font-family="Arial" font-size="12" font-weight="600" fill="#111827" text-anchor="start">
+<tspan x="1680" dy="0">read-only and blocking</tspan>
+</text>
+<rect x="2038" y="1410" width="410" height="74" rx="14" ry="14" fill="#ffffff" stroke="#d8e7ee" stroke-width="2" />
+<circle cx="2072" cy="1447" r="22" fill="#159447" stroke="none" stroke-width="2"/>
+<text x="2072" y="1455" font-family="Arial" font-size="20" font-weight="800" fill="#ffffff" text-anchor="middle">
+<tspan x="2072" dy="0">✓</tspan>
+</text>
+<text x="2112" y="1438" font-family="Arial" font-size="15" font-weight="800" fill="#071b4d" text-anchor="start">
+<tspan x="2112" dy="0">Forward</tspan>
+</text>
+<text x="2112" y="1461" font-family="Arial" font-size="12" font-weight="600" fill="#111827" text-anchor="start">
+<tspan x="2112" dy="0">continues only after guardrails clear</tspan>
+</text>
+</svg>

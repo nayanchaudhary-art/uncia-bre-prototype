@@ -6,6 +6,10 @@ Static HTML prototype for the Uncia LOS Credit Eligibility BRE workflow.
 
 Entry point: `index.html`
 
+One-page workflow: `one-pager-workflow.html`
+
+Link hub: `links.html`
+
 Naming convention used in the prototype:
 
 Recommendation Tab > Extra Input Fields Sub-Tab
