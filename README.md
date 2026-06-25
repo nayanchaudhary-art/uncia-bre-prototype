@@ -6,6 +6,8 @@ Static HTML prototype for the Uncia LOS Credit Eligibility BRE workflow.
 
 Entry point: `index.html`
 
+Credit Eligibility BRE rules: `credit-eligibility-bre-rules.html`
+
 One-page workflow: `one-pager-workflow.html`
 
 Original workflow filename: `workflow/credit_eligibility_bre_board_workflow.html`
