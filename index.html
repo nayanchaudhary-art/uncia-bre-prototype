@@ -3350,7 +3350,34 @@
 
     function markCamUpdated() {
       state.bre.lastCamUpdate = nowStamp();
-      if (state.bre.status !== "not_run") state.bre.stale = true;
+      if (state.bre.eligibility === "eligible" && state.bre.status !== "not_run") state.bre.stale = true;
+    }
+
+    function shouldTrackBreStaleField(field) {
+      if (!field || field.disabled || field.readOnly) return false;
+      if (field.type === "button" || field.type === "submit" || field.type === "hidden") return false;
+      if (field.closest("#modalHost")) return false;
+      if (field.dataset.noBreStale === "true" || field.dataset.devInput || field.dataset.manualSelect) return false;
+      if (field.closest("#manualDeviationBlock") || field.closest("#breDeviationsBlock")) return false;
+
+      const fieldName = field.dataset.field || "";
+      if (fieldName === "scenario" || fieldName in state.extra) return false;
+      if (field.dataset.camField || field.dataset.staleField === "true") return true;
+
+      return state.activeMain === "Recommendation" &&
+        state.activeSub.Recommendation === "Recommendations & Deviations";
+    }
+
+    function attachBreStaleFieldTracking() {
+      $$("input, select, textarea").forEach((field) => {
+        if (!shouldTrackBreStaleField(field)) return;
+        const handler = () => {
+          if (field.dataset.camField === "loanAmount") state.loanAmount = field.value;
+          markCamUpdated();
+        };
+        field.addEventListener("change", handler);
+        if (field.tagName !== "SELECT") field.addEventListener("input", handler);
+      });
     }
 
     function fillExtraFields() {
@@ -3551,12 +3578,7 @@
         });
       });
 
-      $$("[data-cam-field]").forEach((field) => {
-        field.addEventListener("change", () => {
-          if (field.dataset.camField === "loanAmount") state.loanAmount = field.value;
-          markCamUpdated();
-        });
-      });
+      attachBreStaleFieldTracking();
 
       $$("[data-flow]").forEach((button) => {
         button.addEventListener("click", () => {
