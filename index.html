@@ -652,6 +652,10 @@
       max-height: 270px;
     }
 
+    .table-wrap.bre-validation-table {
+      max-height: none;
+    }
+
     table {
       width: 100%;
       border-collapse: collapse;
@@ -1892,7 +1896,7 @@
           <span class="sim-step-number">2</span>
           <div>
             <div class="sim-step-title">Extra Input Fields</div>
-            <div class="sim-step-note">Captures BRE inputs not available in LOS. Missing mandatory fields trigger the validation popup.</div>
+            <div class="sim-step-note">Captures BRE inputs not available in LOS. Save shows a simple missing-fields popup; Run shows the BRE-returned validation table.</div>
           </div>
         </div>
         <div class="sim-options">
@@ -2544,7 +2548,7 @@
             <div class="ef-card-header">Save Extra Fields</div>
             <div class="ef-card-body">
               <div class="message-box">
-                Clicking Save Extra Fields validates current extra inputs and saves the current state. If validation passes, you can run Credit Eligibility BRE from the top right action.
+                Clicking Save Extra Fields validates current extra inputs and saves the current state. If extra fields are missing, a simple missing-fields popup is shown. If validation passes, you can run Credit Eligibility BRE from the top right action.
               </div>
               <div class="page-actions">
                 <button class="legacy-btn" type="button" data-flow="saveExtraFields">Save Extra Fields</button>
@@ -2991,26 +2995,39 @@
       `;
     }
 
-    function validateExtraAndPersist(showMissingModal = true) {
+    function showSaveMissingExtraFieldsPopup() {
+      showModal({
+        title: "Extra Input Fields",
+        body: modalStateBody("warn", "Extra fields missing", ["Some extra fields are missing."]),
+        actions: [{ label: "Close", kind: "secondary", action: closeModal }]
+      });
+    }
+
+    function showBreEngineValidationPopup(missing) {
+      showModal({
+        title: "Credit Eligibility BRE Validation",
+        large: true,
+        body: `
+          ${modalStateBody("warn", "BRE validation failed", ["Credit Eligibility BRE returned mandatory input errors. Please complete the missing fields and run Credit Eligibility BRE again."])}
+          <div class="table-wrap bre-validation-table">
+            <table>
+              <thead><tr><th>Missing input field</th><th>Validation message</th></tr></thead>
+              <tbody>${missing.map((key) => `<tr><td>${extraFieldLabels[key]}</td><td>${extraFieldLabels[key]} is required to run Credit Eligibility BRE.</td></tr>`).join("")}</tbody>
+            </table>
+          </div>
+        `,
+        actions: [{ label: "Close", kind: "secondary", action: closeModal }]
+      });
+    }
+
+    function validateExtraAndPersist(showMissingModal = true, validationSource = "save") {
       const missing = requiredExtraMissing();
       state.bre.missingInputs = missing;
       if (missing.length) {
         renderContent();
         if (showMissingModal) {
-          showModal({
-            title: "Extra Input Fields",
-            large: true,
-            body: `
-              ${modalStateBody("warn", "Fields missing or invalid", ["Some fields are missing or invalid. Please complete or correct them and then proceed."])}
-              <div class="table-wrap">
-                <table>
-                  <thead><tr><th>Missing input field</th><th>Validation message</th></tr></thead>
-                  <tbody>${missing.map((key) => `<tr><td>${extraFieldLabels[key]}</td><td>${extraFieldLabels[key]} is required to run Credit Eligibility BRE.</td></tr>`).join("")}</tbody>
-                </table>
-              </div>
-            `,
-            actions: [{ label: "Close", kind: "secondary", action: closeModal }]
-          });
+          if (validationSource === "bre") showBreEngineValidationPopup(missing);
+          else showSaveMissingExtraFieldsPopup();
         }
         return false;
       }
@@ -3024,7 +3041,7 @@
         goToRecommendations();
         return;
       }
-      if (!validateExtraAndPersist(true)) return;
+      if (!validateExtraAndPersist(true, "save")) return;
       showModal({
         title: "Extra Input Fields",
         body: modalStateBody("passed", "Saved", ["Extra fields saved successfully. You can now run Credit Eligibility BRE."]),
@@ -3042,7 +3059,7 @@
         return;
       }
 
-      if (!validateExtraAndPersist(true)) return;
+      if (!validateExtraAndPersist(true, "bre")) return;
       showModal({
         title: "Run Credit Eligibility BRE",
         body: `
@@ -3587,7 +3604,7 @@
           }
           if (simType === "inputs") {
             setInputState(value);
-            message = value === "missing" ? "Mandatory BRE inputs cleared. Run BRE to see the validation popup." : "Mandatory BRE inputs prefilled and ready.";
+            message = value === "missing" ? "Mandatory BRE inputs cleared. Save shows a simple popup; Run BRE shows the BRE validation table." : "Mandatory BRE inputs prefilled and ready.";
           }
 
           renderContent();
