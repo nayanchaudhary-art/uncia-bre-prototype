@@ -653,13 +653,47 @@
     }
 
     .table-wrap.bre-validation-table {
-      max-height: min(340px, calc(100vh - 410px));
+      max-height: min(260px, calc(100vh - 360px));
+      min-height: 150px;
+      overflow-y: scroll;
+      overflow-x: auto;
+      scrollbar-gutter: stable;
+    }
+
+    .table-wrap.bre-validation-table::-webkit-scrollbar {
+      width: 10px;
+      height: 10px;
+    }
+
+    .table-wrap.bre-validation-table::-webkit-scrollbar-track {
+      background: #edf4f7;
+      border-left: 1px solid #d1d1d1;
+    }
+
+    .table-wrap.bre-validation-table::-webkit-scrollbar-thumb {
+      background: #9ab7c4;
+      border: 2px solid #edf4f7;
+      border-radius: 8px;
     }
 
     .table-wrap.bre-validation-table th {
       position: sticky;
       top: 0;
       z-index: 1;
+    }
+
+    .table-wrap.bre-validation-table table {
+      min-width: 760px;
+      table-layout: fixed;
+    }
+
+    .table-wrap.bre-validation-table th:first-child,
+    .table-wrap.bre-validation-table td:first-child {
+      width: 34%;
+    }
+
+    .table-wrap.bre-validation-table td {
+      line-height: 1.35;
     }
 
     table {
@@ -1530,10 +1564,16 @@
       background: #fff;
       box-shadow: 0 8px 28px rgba(0, 0, 0, .28);
       overflow: hidden;
+      display: flex;
+      flex-direction: column;
     }
 
     .modal.large {
       width: min(1500px, calc(100vw - 48px));
+    }
+
+    .modal.bre-validation-modal {
+      width: min(980px, calc(100vw - 48px));
     }
 
     .modal-head {
@@ -1574,8 +1614,15 @@
       padding: 20px 22px;
       overflow: auto;
       max-height: calc(100vh - 150px);
+      min-height: 0;
+      flex: 1 1 auto;
       line-height: 1.48;
       color: #555;
+    }
+
+    .modal.bre-validation-modal .modal-body {
+      max-height: calc(100vh - 132px);
+      padding: 18px 20px 16px;
     }
 
     .modal-body p {
@@ -1594,6 +1641,21 @@
       padding: 4px 8px 2px;
     }
 
+    .bre-validation-modal .modal-state {
+      display: grid;
+      grid-template-columns: 44px minmax(0, 1fr);
+      grid-template-areas:
+        "icon badge"
+        "icon copy";
+      align-items: start;
+      column-gap: 12px;
+      text-align: left;
+      padding: 12px;
+      border: 1px solid var(--warn-border);
+      border-radius: 6px;
+      background: var(--warn-bg);
+    }
+
     .modal-icon {
       width: 52px;
       height: 52px;
@@ -1605,6 +1667,14 @@
       font-size: 28px;
       font-weight: 700;
       line-height: 1;
+    }
+
+    .bre-validation-modal .modal-icon {
+      grid-area: icon;
+      width: 38px;
+      height: 38px;
+      margin: 0;
+      font-size: 22px;
     }
 
     .modal-icon.passed {
@@ -1639,6 +1709,15 @@
       margin-bottom: 12px;
     }
 
+    .bre-validation-modal .bre-status-badge {
+      grid-area: badge;
+      justify-self: start;
+      min-height: 24px;
+      margin: 0 0 4px;
+      padding: 3px 11px;
+      font-size: 13px;
+    }
+
     .bre-status-badge.passed {
       color: var(--ok);
       background: var(--ok-bg);
@@ -1664,6 +1743,15 @@
       line-height: 1.58;
       max-width: 470px;
       margin: 0 auto 10px;
+    }
+
+    .bre-validation-modal .modal-copy {
+      grid-area: copy;
+      max-width: none;
+      margin: 0;
+      color: #5f5219;
+      font-size: 13px;
+      line-height: 1.45;
     }
 
     .modal-copy strong {
@@ -3028,6 +3116,7 @@
       showModal({
         title: "Credit Eligibility BRE Validation",
         large: true,
+        className: "bre-validation-modal",
         body: `
           ${modalStateBody("warn", "BRE validation failed", ["Credit Eligibility BRE returned mandatory input errors. Please complete the missing fields and run Credit Eligibility BRE again."])}
           <div class="table-wrap bre-validation-table">
@@ -3519,7 +3608,7 @@
       const actionBar = actions ? `<div class="modal-actions">${actions}</div>` : "";
       $("#modalHost").innerHTML = `
         <div class="modal-backdrop">
-          <div class="modal ${config.large ? "large" : ""}" role="dialog" aria-modal="true" aria-label="${escapeHtml(config.title)}">
+          <div class="modal ${config.large ? "large" : ""} ${config.className || ""}" role="dialog" aria-modal="true" aria-label="${escapeHtml(config.title)}">
             <div class="modal-head">
               <span>${escapeHtml(config.title)}</span>
               <button class="modal-close" type="button" data-modal-close>x</button>
