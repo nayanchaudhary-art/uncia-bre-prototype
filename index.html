@@ -521,6 +521,14 @@
       grid-template-columns: 320px minmax(250px, 1fr);
     }
 
+    .field-help {
+      grid-column: 2;
+      margin-top: -7px;
+      color: #66737f;
+      font-size: 11px;
+      font-weight: 700;
+    }
+
     .manual-level-control {
       display: flex;
       align-items: center;
@@ -2392,6 +2400,7 @@
         <div class="extra-fields-page">
           ${renderStatusLine()}
           <div class="page-actions top-bre-actions">
+            <button class="legacy-btn" type="button" data-flow="saveExtraFields">Save Extra Fields</button>
             <button class="legacy-btn" type="button" data-flow="runBre">Run Credit Eligibility BRE</button>
           </div>
 
@@ -2530,9 +2539,10 @@
             <div class="ef-card-header">Run Credit Eligibility BRE</div>
             <div class="ef-card-body">
               <div class="message-box">
-                Clicking Run Credit Eligibility BRE saves the current extra inputs, validates compulsory LOS and BRE fields, then returns the overall BRE outcome, failed rules, identified deviations, and rule counts.
+                Clicking Run Credit Eligibility BRE first saves and validates current extra inputs. If validation passes, the Credit Eligibility BRE engine is called directly.
               </div>
               <div class="page-actions">
+                <button class="legacy-btn" type="button" data-flow="saveExtraFields">Save Extra Fields</button>
                 <button class="legacy-btn" type="button" data-flow="runBre">Run Credit Eligibility BRE</button>
               </div>
             </div>
@@ -2666,6 +2676,7 @@
               <button class="manual-level-lookup" type="button" data-flow="openDeviation" title="Get manual deviation">&#128269;</button>
               <span class="required">*</span>
             </span>
+            <span class="field-help">Taken from Deviation Master</span>
           </div>
           <div class="field-row"><span class="label">Base Programe</span>${select("baseProgramView", ["--Select--"], "--Select--", "", "disabled")}</div>
           <div class="field-row"><span class="label">Due Date</span><span>${select("dueDateView", ["4"], "4", "wide")}<span class="required">*</span></span></div>
@@ -2704,7 +2715,7 @@
           <div class="message-box">No BRE-identified deviations found.</div>
         ` : ""}
 
-        ${!isBreEligible ? renderAutoDeviationTable() : ""}
+        ${!isBreEligible ? `<div class="message-box">Auto Deviations and BRE-identified Deviations are not shown for this Credit Eligibility BRE flow.</div>` : ""}
       `);
     }
 
@@ -2853,28 +2864,6 @@
       `;
     }
 
-    function renderAutoDeviationTable() {
-      return `
-        ${sectionTitle("Auto Deviations")}
-        <div class="table-wrap">
-          <table>
-            <thead><tr><th>Action</th><th>Deviation ID</th><th>Deviation Level</th><th>Status</th><th>Description</th><th>Source</th><th>Remarks</th></tr></thead>
-            <tbody>${autoDeviationRows.map((row) => `
-              <tr>
-                <td><button class="icon-btn" type="button">V</button></td>
-                <td>${row.id}</td>
-                <td>${row.level}</td>
-                <td>${row.status}</td>
-                <td>${row.description}</td>
-                <td>${row.source}</td>
-                <td></td>
-              </tr>
-            `).join("")}</tbody>
-          </table>
-        </div>
-      `;
-    }
-
     function renderDeviationDetail(devId = state.editingDeviationId) {
       const dev = breDeviations.find((item) => item.id === devId);
       if (!dev) return "";
@@ -3008,7 +2997,7 @@
             title: "Extra Input Fields",
             large: true,
             body: `
-              ${modalStateBody("warn", "Extra fields missing", ["Some extra fields are missing. Please fill them and then proceed."])}
+              ${modalStateBody("warn", "Fields missing or invalid", ["Some fields are missing or invalid. Please complete or correct them and then proceed."])}
               <div class="table-wrap">
                 <table>
                   <thead><tr><th>Missing input field</th><th>Validation message</th></tr></thead>
@@ -3023,6 +3012,23 @@
       }
       state.bre.savedExtra = true;
       return true;
+    }
+
+    function saveExtraFields() {
+      if (state.bre.eligibility !== "eligible") {
+        closeModal();
+        goToRecommendations();
+        return;
+      }
+      if (!validateExtraAndPersist(true)) return;
+      showModal({
+        title: "Extra Input Fields",
+        body: modalStateBody("passed", "Saved", ["Extra fields saved successfully. You can now run Credit Eligibility BRE."]),
+        actions: [
+          { label: "Run Credit Eligibility BRE", kind: "primary", action: runBre },
+          { label: "Close", kind: "secondary", action: closeModal }
+        ]
+      });
     }
 
     function runBre() {
@@ -3077,8 +3083,9 @@
 
       if (state.bre.status === "failed") {
         body = modalStateBody("failed", "Status: Failed", [
-          `${counts.failed} rule(s) failed.`,
-          "This application is not eligible for submission. To proceed, please update the required fields and re-run the BRE, or reject the case."
+          `${counts.failed} rule(s) failed and ${counts.deviated} rule(s) deviated.`,
+          "Failed Rules and BRE-identified Deviations are both shown when returned by BRE.",
+          "Description and remarks are required for BRE-identified deviations, but Forward remains blocked until the failed outcome is resolved by updating required fields and re-running Credit Eligibility BRE, or rejecting the case."
         ]);
         primary = { label: "View Failed rules", kind: "primary", action: () => goToRecommendations("failedRulesBlock") };
       }
@@ -3497,6 +3504,7 @@
       $$("[data-flow]").forEach((button) => {
         button.addEventListener("click", () => {
           const flow = button.dataset.flow;
+          if (flow === "saveExtraFields") saveExtraFields();
           if (flow === "runBre") runBre();
           if (flow === "openDeviation") openDeviationFlow();
           if (flow === "manualDeviation") showManualPicker();
