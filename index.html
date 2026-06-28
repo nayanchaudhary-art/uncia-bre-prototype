@@ -653,7 +653,13 @@
     }
 
     .table-wrap.bre-validation-table {
-      max-height: none;
+      max-height: min(340px, calc(100vh - 410px));
+    }
+
+    .table-wrap.bre-validation-table th {
+      position: sticky;
+      top: 0;
+      z-index: 1;
     }
 
     table {
@@ -1059,12 +1065,6 @@
       justify-content: flex-end;
     }
 
-    @media (min-width: 1280px) {
-      .extra-fields-page .top-bre-actions {
-        padding-right: 450px;
-      }
-    }
-
     .ef-case-setup {
       margin: 0 0 16px;
       border: 2px solid #b8d7e3;
@@ -1179,10 +1179,10 @@
     .sim-panel {
       position: fixed;
       right: 16px;
-      top: 100px;
+      top: 345px;
       z-index: 46;
       width: 430px;
-      max-height: calc(100vh - 116px);
+      max-height: calc(100vh - 361px);
       border: 2px solid #4597b4;
       border-radius: 6px;
       background: #f7fcfe;
@@ -1548,9 +1548,18 @@
       border-bottom: 1px solid #d7e5ea;
     }
 
+    .modal-head span {
+      min-width: 0;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
     .modal-close {
       width: 22px;
       height: 22px;
+      flex: 0 0 22px;
+      margin-left: 14px;
       border: 0;
       border-radius: 50%;
       background: transparent;
@@ -1873,7 +1882,7 @@
       <button class="sim-close" id="simClose" type="button">x</button>
     </div>
     <div class="sim-panel-body">
-      <div class="sim-intro">Simulator only. Use these three controls to demonstrate the Credit Eligibility BRE flow. Recommendation Tab > Extra Input Fields Sub-Tab and Recommendation Tab > Recommendations &amp; Deviations Sub-Tab. Description, remarks, stale-result checks, and Forward blockers are handled inside the normal page flow.</div>
+      <div class="sim-intro">Simulator only. Use these three controls to demonstrate the Credit Eligibility BRE flow. Recommendation Tab > Extra Input Fields Sub-Tab and Recommendation Tab > Recommendations &amp; Deviations Sub-Tab. Deviation Description is read-only, Remarks are editable, and stale-result checks plus Forward blockers are handled inside the normal page flow.</div>
 
       <div class="sim-flow-step">
         <div class="sim-step-head">
@@ -1896,11 +1905,11 @@
           <span class="sim-step-number">2</span>
           <div>
             <div class="sim-step-title">Extra Input Fields</div>
-            <div class="sim-step-note">Captures BRE inputs not available in LOS. Save shows a simple missing-fields popup; Run shows the BRE-returned validation table.</div>
+            <div class="sim-step-note">Captures BRE inputs not available in LOS. Save shows a simple missing-fields popup; Run blocks unsaved inputs or shows BRE-returned validation errors.</div>
           </div>
         </div>
         <div class="sim-options">
-          <button class="sim-option" type="button" data-sim="inputs" data-val="missing">Missing mandatory inputs</button>
+          <button class="sim-option" type="button" data-sim="inputs" data-val="missing">BRE returned missing inputs</button>
           <button class="sim-option" type="button" data-sim="inputs" data-val="saved">Saved and ready</button>
         </div>
       </div>
@@ -1911,7 +1920,7 @@
           <span class="sim-step-number">3</span>
           <div>
             <div class="sim-step-title">BRE Result</div>
-            <div class="sim-step-note">Passed allows clean recommendations. Deviated requires description and remarks. Failed shows read-only Failed Rules and blocks Forward.</div>
+            <div class="sim-step-note">Passed allows clean recommendations. Deviated shows read-only Deviation Description and requires Remarks. Failed shows read-only Failed Rules and blocks Forward.</div>
           </div>
         </div>
         <div class="sim-options">
@@ -1920,7 +1929,7 @@
           <button class="sim-option" type="button" data-sim="credit" data-val="failed">Failed</button>
         </div>
       </div>
-      <div class="sim-hint">Default state has mandatory inputs filled. Click Run Credit Eligibility BRE on the Extra Input Fields sub-tab to save, validate, execute BRE, and view the selected result.</div>
+      <div class="sim-hint">Default state has mandatory inputs filled and saved. If extra fields are edited and not saved, Run Credit Eligibility BRE shows the Extra fields not saved popup.</div>
     </div>
   </div>
 
@@ -1971,7 +1980,8 @@
         stale: false,
         lastRun: "",
         lastCamUpdate: "19 Jun 2026 01:29 AM",
-        missingInputs: []
+        missingInputs: [],
+        engineValidationInputs: []
       },
       extra: {
         assessmentType: "Assessed Income Program",
@@ -2200,7 +2210,7 @@
     function getBreCounts() {
       return {
         failed: state.bre.status === "failed" ? failedRules.length : 0,
-        deviated: state.bre.status === "deviated" ? breDeviations.length : 0
+        deviated: state.bre.status === "deviated" || state.bre.status === "failed" ? breDeviations.length : 0
       };
     }
 
@@ -2832,7 +2842,7 @@
       return `
         ${sectionTitle("Failed Rules")}
         <div class="message-box danger">
-          ${failedRules.length} rule(s) failed. This application is not eligible for submission until the required fields are updated and Credit Eligibility BRE is re-run, or the case is rejected.
+          ${failedRules.length} rule(s) Failed and ${breDeviations.length} rule(s) Deviated. This application is not eligible for submission. To proceed, please update the required fields and re-run the BRE, or reject the case.
         </div>
         <div class="table-wrap">
           <table>
@@ -2855,7 +2865,7 @@
         ${sectionTitle("BRE-identified Deviations")}
         <div class="table-wrap">
           <table class="deviation-grid">
-            <thead><tr><th>Action</th><th>Deviation Level</th><th>Status</th><th>Description</th><th>Remarks</th><th>Authorized By</th></tr></thead>
+            <thead><tr><th>Action</th><th>Deviation Level</th><th>Status</th><th>Deviation Description</th><th>Remarks</th><th>Authorized By</th></tr></thead>
             <tbody>${breDeviations.map((dev) => `
               <tr>
                 <td><button class="icon-btn deviation-action-icon" type="button" data-flow="editDeviation" data-dev-id="${dev.id}" title="Open deviation">&#128269;</button></td>
@@ -2889,7 +2899,7 @@
             <span></span>
             <span></span>
 
-            <span class="label">Description</span>
+            <span class="label">Deviation Description</span>
             ${textarea(dev.description, "full readonly span3", "readonly")}
 
             <span class="label">Remarks</span>
@@ -3003,6 +3013,17 @@
       });
     }
 
+    function showExtraFieldsNotSavedPopup() {
+      showModal({
+        title: "Run Credit Eligibility BRE",
+        body: modalStateBody("warn", "Extra fields not saved", ["Extra fields are not saved. Please save the Extra Input Fields before running Credit Eligibility BRE."]),
+        actions: [
+          { label: "Save Extra Fields", kind: "primary", action: saveExtraFields },
+          { label: "Close", kind: "secondary", action: closeModal }
+        ]
+      });
+    }
+
     function showBreEngineValidationPopup(missing) {
       showModal({
         title: "Credit Eligibility BRE Validation",
@@ -3026,8 +3047,7 @@
       if (missing.length) {
         renderContent();
         if (showMissingModal) {
-          if (validationSource === "bre") showBreEngineValidationPopup(missing);
-          else showSaveMissingExtraFieldsPopup();
+          showSaveMissingExtraFieldsPopup();
         }
         return false;
       }
@@ -3059,7 +3079,17 @@
         return;
       }
 
-      if (!validateExtraAndPersist(true, "bre")) return;
+      if (!state.bre.savedExtra) {
+        showExtraFieldsNotSavedPopup();
+        return;
+      }
+      const breReturnedMissing = state.bre.engineValidationInputs.length ? [...state.bre.engineValidationInputs] : requiredExtraMissing();
+      if (breReturnedMissing.length) {
+        state.bre.missingInputs = breReturnedMissing;
+        renderContent();
+        showBreEngineValidationPopup(breReturnedMissing);
+        return;
+      }
       showModal({
         title: "Run Credit Eligibility BRE",
         body: `
@@ -3075,6 +3105,7 @@
         state.bre.stale = false;
         state.bre.lastRun = nowStamp();
         state.bre.missingInputs = [];
+        state.bre.engineValidationInputs = [];
         renderContent();
         showBreResultModal();
       }, 800);
@@ -3096,7 +3127,7 @@
       if (state.bre.status === "deviated") {
         body = modalStateBody("deviated", "Status: Deviated", [
           `${counts.deviated} rule(s) deviated.`,
-          "Please review the description and add remarks for the identified deviations.",
+          "Please review the Deviation Description and add Remarks for the identified deviations.",
           "You may also record additional manual deviations if required."
         ]);
         primary = { label: "View/add deviations", kind: "primary", action: () => goToRecommendations("breDeviationsBlock") };
@@ -3104,9 +3135,7 @@
 
       if (state.bre.status === "failed") {
         body = modalStateBody("failed", "Status: Failed", [
-          `${counts.failed} rule(s) failed and ${counts.deviated} rule(s) deviated.`,
-          "Failed Rules and BRE-identified Deviations are both shown when returned by BRE.",
-          "Description and remarks are required for BRE-identified deviations, but Forward remains blocked until the failed outcome is resolved by updating required fields and re-running Credit Eligibility BRE, or rejecting the case."
+          `${counts.failed} rule(s) Failed and ${counts.deviated} rule(s) Deviated. This application is not eligible for submission. To proceed, please update the required fields and re-run the BRE, or reject the case.`
         ]);
         primary = { label: "View Failed rules", kind: "primary", action: () => goToRecommendations("failedRulesBlock") };
       }
@@ -3163,17 +3192,17 @@
     }
 
     function handleForward() {
+      if (state.bre.eligibility === "not_eligible") {
+        showForwardConfirmation();
+        return;
+      }
+
       if (state.bre.eligibility === "gate_error") {
         showModal({
           title: "Credit Eligibility unavailable",
           body: modalStateBody("failed", "Service unavailable", ["503 Service Unavailable. Credit Eligibility BRE eligibility check is currently unavailable due to a service issue.", "Please try again after some time."]),
           actions: [{ label: "Close", kind: "secondary", action: closeModal }]
         });
-        return;
-      }
-
-      if (state.bre.eligibility === "not_eligible") {
-        showForwardConfirmation();
         return;
       }
 
@@ -3195,11 +3224,11 @@
       }
 
       if (state.bre.status === "failed") {
+        const counts = getBreCounts();
         showModal({
           title: "Credit Eligibility BRE failed",
           body: modalStateBody("failed", "Status: Failed", [
-            `${failedRules.length} rule(s) failed.`,
-            "This application is not eligible for submission. You can update the required fields and re-run the BRE, or reject the case."
+            `${counts.failed} rule(s) Failed and ${counts.deviated} rule(s) Deviated. This application is not eligible for submission. To proceed, please update the required fields and re-run the BRE, or reject the case.`
           ]),
           actions: [
             { label: "View Failed rules", kind: "primary", action: () => goToRecommendations("failedRulesBlock") },
@@ -3212,7 +3241,7 @@
       if (state.bre.status === "deviated" && !allDeviationsComplete()) {
         showModal({
           title: "Deviation remarks required",
-          body: modalStateBody("warn", "Remarks required", ["Please review the description and add remarks for deviations to proceed."]),
+          body: modalStateBody("warn", "Remarks required", ["Please review the Deviation Description and add Remarks for deviations to proceed."]),
           actions: [
             { label: "Go to Deviations", kind: "primary", action: () => goToRecommendations("breDeviationsBlock") },
             { label: "Close", kind: "secondary", action: closeModal }
@@ -3337,6 +3366,7 @@
       };
       state.bre.missingInputs = [];
       state.bre.savedExtra = true;
+      state.bre.engineValidationInputs = [];
     }
 
     function clearExtraFields() {
@@ -3345,6 +3375,7 @@
       });
       state.bre.missingInputs = [...requiredExtraFieldKeys];
       state.bre.savedExtra = false;
+      state.bre.engineValidationInputs = [];
     }
 
     function resetBreDeviationRemarks() {
@@ -3398,7 +3429,9 @@
       state.activeMain = "Recommendation";
       state.activeSub.Recommendation = "Extra Input Fields";
       if (value === "missing") {
-        clearExtraFields();
+        fillExtraFields();
+        state.bre.engineValidationInputs = [...requiredExtraFieldKeys];
+        state.bre.savedExtra = true;
         state.bre.status = "not_run";
         state.bre.stale = false;
         state.bre.lastRun = "";
@@ -3507,6 +3540,9 @@
           const name = field.dataset.field;
           if (name in state.extra) {
             state.extra[name] = field.value === "--Select--" ? "" : field.value;
+            state.bre.savedExtra = false;
+            state.bre.engineValidationInputs = [];
+            if (state.bre.status !== "not_run") markCamUpdated();
             if (state.bre.missingInputs.includes(name)) {
               state.bre.missingInputs = state.bre.missingInputs.filter((key) => key !== name);
             }
@@ -3545,10 +3581,8 @@
       button.addEventListener("click", () => {
         const action = button.dataset.action;
         if (action === "saveDraft") {
-          markCamUpdated();
           renderContent();
-          if (state.bre.eligibility === "eligible" && state.bre.status !== "not_run") showStaleModal();
-          else toast("Application saved as draft.");
+          toast("Application saved as draft.");
         }
         if (action === "sendBack") {
           showModal({
@@ -3604,7 +3638,7 @@
           }
           if (simType === "inputs") {
             setInputState(value);
-            message = value === "missing" ? "Mandatory BRE inputs cleared. Save shows a simple popup; Run BRE shows the BRE validation table." : "Mandatory BRE inputs prefilled and ready.";
+            message = value === "missing" ? "BRE will return mandatory input errors. Run BRE to see the validation table." : "Mandatory BRE inputs prefilled, saved, and ready.";
           }
 
           renderContent();

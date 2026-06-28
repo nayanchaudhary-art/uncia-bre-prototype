@@ -570,11 +570,11 @@
       <div class="h" style="font-size: 25px;"><span class="ui-highlight">Save Popup</span></div>
       <div class="b" style="font-size: 17px;">Simple popup only: Some extra fields are missing.</div>
     </section>
-    <div class="flow-label green" style="left:955px; top:1418px;">Save valid / user runs BRE</div>
+    <div class="flow-label green" style="left:955px; top:1418px;">Saved / user runs BRE</div>
 
     <section class="box blue" style="left:595px; top:1460px; width:700px; height:120px;">
       <div class="h">Run Credit Eligibility BRE</div>
-      <div class="b">Send LOS fields + saved extra inputs to Weaver / BRE</div>
+      <div class="b">If extra fields are not saved: show Extra fields not saved popup. If saved: send LOS fields + saved extra inputs to Weaver / BRE.</div>
     </section>
     <section class="box amber ui-surface" style="left:1335px; top:1460px; width:400px; height:150px;">
       <div class="h" style="font-size: 23px;"><span class="ui-highlight">BRE Validation Popup</span></div>
@@ -596,7 +596,7 @@
     </section>
     <section class="box amber" style="left:755px; top:1850px; width:380px; height:120px;">
       <div class="h">Deviated</div>
-      <div class="b">BRE devs require<br>description &amp; remarks</div>
+      <div class="b">Read-only Deviation Description<br>Remarks required</div>
     </section>
     <section class="box red" style="left:1250px; top:1850px; width:380px; height:120px;">
       <div class="h">Failed</div>
@@ -629,7 +629,8 @@
           <ul>
             <li>Show only if returned by BRE</li>
             <li>Auto-populated from BRE</li>
-            <li>Frozen except description / remarks</li>
+            <li>Deviation Description is read-only</li>
+            <li>Remarks are editable and required</li>
           </ul>
         </div>
         <div class="info-card">
@@ -733,7 +734,7 @@
     </section>
 
     <section class="decision gate" style="left:1350px; top:3760px; width:900px; height:130px;">
-      <div class="h">Are BRE deviation description and remarks complete?</div>
+      <div class="h">Are BRE deviation remarks complete?</div>
     </section>
     <div class="flow-label amber" style="left:2282px; top:3794px;">NO</div>
     <div class="flow-label green" style="left:1814px; top:3900px;">YES</div>
