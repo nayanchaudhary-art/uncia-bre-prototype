@@ -3780,7 +3780,7 @@
         let expected = "";
         if (simType === "eligibility") expected = state.bre.eligibility;
         if (simType === "credit") expected = state.bre.scenario;
-        if (simType === "inputs") expected = state.bre.savedExtra ? "saved" : "missing";
+        if (simType === "inputs") expected = state.bre.engineValidationInputs.length ? "missing" : state.bre.savedExtra ? "saved" : "missing";
         button.classList.remove(...activeClasses);
         if (button.dataset.val === expected) {
           button.classList.add(activeSimulatorClass(expected));
