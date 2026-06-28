@@ -1052,7 +1052,13 @@
 
     .page-actions.top-bre-actions {
       padding: 0 0 12px;
-      justify-content: flex-start;
+      justify-content: flex-end;
+    }
+
+    @media (min-width: 1280px) {
+      .extra-fields-page .top-bre-actions {
+        padding-right: 450px;
+      }
     }
 
     .ef-case-setup {
@@ -2400,7 +2406,6 @@
         <div class="extra-fields-page">
           ${renderStatusLine()}
           <div class="page-actions top-bre-actions">
-            <button class="legacy-btn" type="button" data-flow="saveExtraFields">Save Extra Fields</button>
             <button class="legacy-btn" type="button" data-flow="runBre">Run Credit Eligibility BRE</button>
           </div>
 
@@ -2536,14 +2541,13 @@
           </div>
 
           <div class="ef-card">
-            <div class="ef-card-header">Run Credit Eligibility BRE</div>
+            <div class="ef-card-header">Save Extra Fields</div>
             <div class="ef-card-body">
               <div class="message-box">
-                Clicking Run Credit Eligibility BRE first saves and validates current extra inputs. If validation passes, the Credit Eligibility BRE engine is called directly.
+                Clicking Save Extra Fields validates current extra inputs and saves the current state. If validation passes, you can run Credit Eligibility BRE from the top right action.
               </div>
               <div class="page-actions">
                 <button class="legacy-btn" type="button" data-flow="saveExtraFields">Save Extra Fields</button>
-                <button class="legacy-btn" type="button" data-flow="runBre">Run Credit Eligibility BRE</button>
               </div>
             </div>
           </div>
