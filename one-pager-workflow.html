@@ -477,13 +477,10 @@
       <path class="conn blue" d="M945 1580 V1660" marker-end="url(#arrow-blue)"></path>
 
       <path class="conn green" d="M945 1770 V1815 H345 V1850" marker-end="url(#arrow-green)"></path>
-      <path class="conn amber" d="M945 1770 V1815 H730 V1850" marker-end="url(#arrow-amber)"></path>
-      <path class="conn red" d="M945 1770 V1815 H1115 V1850" marker-end="url(#arrow-red)"></path>
-      <path class="conn red" d="M945 1770 V1815 H1500 V1850" marker-end="url(#arrow-red)"></path>
-      <path class="conn green" d="M345 1970 V2010 H945 V2090" marker-end="url(#arrow-green)"></path>
-      <path class="conn amber" d="M730 1970 V2010 H945 V2090" marker-end="url(#arrow-amber)"></path>
-      <path class="conn red" d="M1115 1985 V2030 H945 V2090" marker-end="url(#arrow-red)"></path>
-      <path class="conn red" d="M1500 1985 V2030 H945 V2090" marker-end="url(#arrow-red)"></path>
+      <path class="conn amber" d="M945 1770 V1815 H725 V1850" marker-end="url(#arrow-amber)"></path>
+      <path class="conn red" d="M945 1770 V1815 H1195 V1850" marker-end="url(#arrow-red)"></path>
+      <path class="conn red" d="M945 1770 V1815 H1575 V1850" marker-end="url(#arrow-red)"></path>
+      <path class="conn blue" d="M945 1770 V2035 H320 V2090" marker-end="url(#arrow-blue)"></path>
       <path class="conn green" d="M945 2530 V2600 H1650 V2700" marker-end="url(#arrow-green)"></path>
 
       <path class="conn gray" d="M2680 730 V800" marker-end="url(#arrow-gray)"></path>
@@ -598,15 +595,15 @@
       <div class="h">Passed</div>
       <div class="b">No BRE devs<br>Manual dev optional</div>
     </section>
-    <section class="box amber" style="left:565px; top:1850px; width:330px; height:120px;">
+    <section class="box amber" style="left:560px; top:1850px; width:330px; height:120px;">
       <div class="h">Deviated</div>
       <div class="b">Read-only Deviation Description<br>Remarks required</div>
     </section>
-    <section class="box red" style="left:950px; top:1850px; width:330px; height:135px;">
+    <section class="box red" style="left:1030px; top:1850px; width:330px; height:135px;">
       <div class="h">Failed</div>
       <div class="b" style="font-size: 17px;">Failed Rules shown<br>BRE deviations shown if returned<br>Forward blocked</div>
     </section>
-    <section class="box red" style="left:1335px; top:1850px; width:330px; height:135px;">
+    <section class="box red" style="left:1410px; top:1850px; width:330px; height:135px;">
       <div class="h">Error / Skip</div>
       <div class="b" style="font-size: 17px;">Retry-later message only<br>No Failed Rules CTA<br>Forward blocked</div>
     </section>
@@ -718,7 +715,7 @@
     <div class="flow-label green" style="left:1814px; top:3431px;">YES</div>
     <section class="terminal amber ui-surface" style="left:2350px; top:3330px; width:950px; height:90px;">
       <div class="h">No</div>
-      <div class="b"><span class="ui-highlight">Forward popup</span>: Block Forward. CTA: Run Credit Eligibility BRE (calls BRE engine after saved-fields pre-check).</div>
+      <div class="b"><span class="ui-highlight">Forward popup</span>: Block Forward. CTA calls Credit Eligibility BRE after saved-fields pre-check.</div>
     </section>
 
     <section class="decision gate" style="left:1350px; top:3465px; width:900px; height:120px;">
@@ -729,7 +726,7 @@
     <div class="flow-label green" style="left:1814px; top:3593px;">YES</div>
     <section class="terminal amber ui-surface" style="left:2350px; top:3475px; width:950px; height:100px;">
       <div class="h">No / stale</div>
-      <div class="b"><span class="ui-highlight">Forward popup</span>: Block Forward. CTA: Re-run Credit Eligibility BRE (calls BRE engine after saved-fields pre-check).</div>
+      <div class="b"><span class="ui-highlight">Forward popup</span>: Block Forward. CTA re-runs Credit Eligibility BRE after saved-fields pre-check.</div>
     </section>
 
     <section class="decision gate" style="left:1350px; top:3625px; width:900px; height:90px;">
@@ -749,7 +746,7 @@
     <div class="flow-label green" style="left:1817px; top:3866px;">NO</div>
     <section class="terminal red ui-surface" style="left:2350px; top:3750px; width:950px; height:120px;">
       <div class="h">Yes / Error or Skip</div>
-      <div class="b"><span class="ui-highlight">Forward popup</span>: Block Forward. Show: An unexpected error occurred during BRE execution. Please try again after some time. No primary CTA.</div>
+      <div class="b"><span class="ui-highlight">Forward popup</span>: Block Forward. Show retry-later BRE execution message. No primary CTA.</div>
     </section>
 
     <section class="decision gate" style="left:1350px; top:3905px; width:900px; height:130px;">
