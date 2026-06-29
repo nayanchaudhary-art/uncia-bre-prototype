@@ -441,7 +441,7 @@
     <div class="scope">Scope: Deal / Application level flow inside Uncia LOS</div>
     <section class="lane true" style="left:120px; top:560px; width:1650px; height:2040px;"></section>
     <section class="lane false" style="left:1880px; top:560px; width:1600px; height:1950px;"></section>
-    <section class="forward-wrap" style="left:120px; top:2940px; width:3360px; height:1450px;">
+    <section class="forward-wrap" style="left:120px; top:2940px; width:3360px; height:1500px;">
       <div class="forward-title">Forward Decision Sequence</div>
     </section>
 
@@ -476,12 +476,14 @@
       <path class="conn green" d="M945 1380 V1460" marker-end="url(#arrow-green)"></path>
       <path class="conn blue" d="M945 1580 V1660" marker-end="url(#arrow-blue)"></path>
 
-      <path class="conn green" d="M945 1770 V1815 H450 V1850" marker-end="url(#arrow-green)"></path>
-      <path class="conn amber" d="M945 1770 V1850" marker-end="url(#arrow-amber)"></path>
-      <path class="conn red" d="M945 1770 V1815 H1440 V1850" marker-end="url(#arrow-red)"></path>
-      <path class="conn green" d="M450 1970 V2010 H945 V2090" marker-end="url(#arrow-green)"></path>
-      <path class="conn amber" d="M945 1970 V2090" marker-end="url(#arrow-amber)"></path>
-      <path class="conn red" d="M1440 2000 V2030 H945 V2090" marker-end="url(#arrow-red)"></path>
+      <path class="conn green" d="M945 1770 V1815 H345 V1850" marker-end="url(#arrow-green)"></path>
+      <path class="conn amber" d="M945 1770 V1815 H730 V1850" marker-end="url(#arrow-amber)"></path>
+      <path class="conn red" d="M945 1770 V1815 H1115 V1850" marker-end="url(#arrow-red)"></path>
+      <path class="conn red" d="M945 1770 V1815 H1500 V1850" marker-end="url(#arrow-red)"></path>
+      <path class="conn green" d="M345 1970 V2010 H945 V2090" marker-end="url(#arrow-green)"></path>
+      <path class="conn amber" d="M730 1970 V2010 H945 V2090" marker-end="url(#arrow-amber)"></path>
+      <path class="conn red" d="M1115 1985 V2030 H945 V2090" marker-end="url(#arrow-red)"></path>
+      <path class="conn red" d="M1500 1985 V2030 H945 V2090" marker-end="url(#arrow-red)"></path>
       <path class="conn green" d="M945 2530 V2600 H1650 V2700" marker-end="url(#arrow-green)"></path>
 
       <path class="conn gray" d="M2680 730 V800" marker-end="url(#arrow-gray)"></path>
@@ -499,10 +501,12 @@
       <path class="conn blue" d="M1800 3585 V3625" marker-end="url(#arrow-blue)"></path>
       <path class="conn red" d="M2250 3670 H2350" marker-end="url(#arrow-red)"></path>
       <path class="conn blue" d="M1800 3715 V3760" marker-end="url(#arrow-blue)"></path>
-      <path class="conn amber" d="M2250 3825 H2350" marker-end="url(#arrow-amber)"></path>
-      <path class="conn blue" d="M1800 3890 V3935" marker-end="url(#arrow-blue)"></path>
-      <path class="conn green" d="M1800 4015 V4055" marker-end="url(#arrow-green)"></path>
-      <path class="conn green" d="M1800 4145 V4185" marker-end="url(#arrow-green)"></path>
+      <path class="conn red" d="M2250 3810 H2350" marker-end="url(#arrow-red)"></path>
+      <path class="conn blue" d="M1800 3860 V3905" marker-end="url(#arrow-blue)"></path>
+      <path class="conn amber" d="M2250 3970 H2350" marker-end="url(#arrow-amber)"></path>
+      <path class="conn blue" d="M1800 4035 V4080" marker-end="url(#arrow-blue)"></path>
+      <path class="conn green" d="M1800 4160 V4200" marker-end="url(#arrow-green)"></path>
+      <path class="conn green" d="M1800 4290 V4320" marker-end="url(#arrow-green)"></path>
     </svg>
 
     <section class="box blue" style="left:1450px; top:160px; width:700px; height:95px;">
@@ -590,17 +594,21 @@
       <div class="b" style="font-size: 16px;">Shown after BRE run with status, short message, and next action.</div>
     </section>
 
-    <section class="box green" style="left:260px; top:1850px; width:380px; height:120px;">
+    <section class="box green" style="left:180px; top:1850px; width:330px; height:120px;">
       <div class="h">Passed</div>
       <div class="b">No BRE devs<br>Manual dev optional</div>
     </section>
-    <section class="box amber" style="left:755px; top:1850px; width:380px; height:120px;">
+    <section class="box amber" style="left:565px; top:1850px; width:330px; height:120px;">
       <div class="h">Deviated</div>
       <div class="b">Read-only Deviation Description<br>Remarks required</div>
     </section>
-    <section class="box red" style="left:1250px; top:1850px; width:380px; height:150px;">
-      <div class="h">Failed / Error / Skip</div>
-      <div class="b" style="font-size: 17px;">Failed Rules shown only for Failed<br>Error / Skip show retry-later message<br>Forward blocked</div>
+    <section class="box red" style="left:950px; top:1850px; width:330px; height:135px;">
+      <div class="h">Failed</div>
+      <div class="b" style="font-size: 17px;">Failed Rules shown<br>BRE deviations shown if returned<br>Forward blocked</div>
+    </section>
+    <section class="box red" style="left:1335px; top:1850px; width:330px; height:135px;">
+      <div class="h">Error / Skip</div>
+      <div class="b" style="font-size: 17px;">Retry-later message only<br>No Failed Rules CTA<br>Forward blocked</div>
     </section>
 
     <section class="box blue ui-surface" style="left:260px; top:2090px; width:1370px; height:440px;">
@@ -725,34 +733,44 @@
     </section>
 
     <section class="decision gate" style="left:1350px; top:3625px; width:900px; height:90px;">
-      <div class="h">Is BRE outcome Failed, Error, or Skip?</div>
+      <div class="h">Is BRE outcome Failed?</div>
     </section>
     <div class="flow-label red" style="left:2278px; top:3639px;">YES</div>
     <div class="flow-label green" style="left:1817px; top:3726px;">NO</div>
     <section class="terminal red ui-surface" style="left:2350px; top:3615px; width:950px; height:120px;">
-      <div class="h">Yes</div>
-      <div class="b"><span class="ui-highlight">Forward popup</span>: Block Forward. Failed: CTA View Failed Rules. Error / Skip: An unexpected error occurred during BRE execution. Please try again after some time.</div>
+      <div class="h">Yes / Failed</div>
+      <div class="b"><span class="ui-highlight">Forward popup</span>: Block Forward. Show Failed message. CTA: View Failed Rules.</div>
     </section>
 
-    <section class="decision gate" style="left:1350px; top:3760px; width:900px; height:130px;">
+    <section class="decision gate" style="left:1350px; top:3760px; width:900px; height:100px;">
+      <div class="h">Is BRE outcome Error or Skip?</div>
+    </section>
+    <div class="flow-label red" style="left:2278px; top:3784px;">YES</div>
+    <div class="flow-label green" style="left:1817px; top:3866px;">NO</div>
+    <section class="terminal red ui-surface" style="left:2350px; top:3750px; width:950px; height:120px;">
+      <div class="h">Yes / Error or Skip</div>
+      <div class="b"><span class="ui-highlight">Forward popup</span>: Block Forward. Show: An unexpected error occurred during BRE execution. Please try again after some time. No primary CTA.</div>
+    </section>
+
+    <section class="decision gate" style="left:1350px; top:3905px; width:900px; height:130px;">
       <div class="h">Are BRE deviation remarks complete?</div>
     </section>
-    <div class="flow-label amber" style="left:2282px; top:3794px;">NO</div>
-    <div class="flow-label green" style="left:1814px; top:3900px;">YES</div>
-    <section class="terminal amber ui-surface" style="left:2350px; top:3775px; width:950px; height:110px;">
+    <div class="flow-label amber" style="left:2282px; top:3939px;">NO</div>
+    <div class="flow-label green" style="left:1814px; top:4045px;">YES</div>
+    <section class="terminal amber ui-surface" style="left:2350px; top:3920px; width:950px; height:110px;">
       <div class="h">No</div>
       <div class="b"><span class="ui-highlight">Forward popup</span>: Block Forward. CTA: Go to Deviations.</div>
     </section>
 
-    <section class="box green gate" style="left:1350px; top:3935px; width:900px; height:80px;">
+    <section class="box green gate" style="left:1350px; top:4080px; width:900px; height:80px;">
       <div class="h">All BRE checks clear</div>
     </section>
 
-    <section class="box blue gate" style="left:1350px; top:4055px; width:900px; height:90px;">
+    <section class="box blue gate" style="left:1350px; top:4200px; width:900px; height:90px;">
       <div class="h">Continue existing LOS Forward validations</div>
     </section>
 
-    <section class="box green gate" style="left:1350px; top:4185px; width:900px; height:90px;">
+    <section class="box green gate" style="left:1350px; top:4320px; width:900px; height:90px;">
       <div class="h">Send CAM Sheet for approval</div>
     </section>
 
