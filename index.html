@@ -871,7 +871,9 @@
       background: var(--warn-bg);
     }
 
-    .status-pill.failed {
+    .status-pill.failed,
+    .status-pill.error,
+    .status-pill.skip {
       color: var(--fail);
       border-color: var(--fail-border);
       background: var(--fail-bg);
@@ -2008,13 +2010,15 @@
           <span class="sim-step-number">3</span>
           <div>
             <div class="sim-step-title">BRE Result</div>
-            <div class="sim-step-note">Passed allows clean recommendations. Deviated shows read-only Deviation Description and requires Remarks. Failed shows read-only Failed Rules and blocks Forward.</div>
+            <div class="sim-step-note">Passed allows clean recommendations. Deviated shows read-only Deviation Description and requires Remarks. Failed, Error, and Skip block Forward.</div>
           </div>
         </div>
         <div class="sim-options">
           <button class="sim-option" type="button" data-sim="credit" data-val="passed">Passed</button>
           <button class="sim-option" type="button" data-sim="credit" data-val="deviated">Deviated</button>
           <button class="sim-option" type="button" data-sim="credit" data-val="failed">Failed</button>
+          <button class="sim-option" type="button" data-sim="credit" data-val="error">Error</button>
+          <button class="sim-option" type="button" data-sim="credit" data-val="skip">Skip</button>
         </div>
       </div>
       <div class="sim-hint">Default state has mandatory inputs filled and saved. If extra fields are edited and not saved, Run Credit Eligibility BRE shows the Extra fields not saved popup.</div>
@@ -2109,6 +2113,8 @@
       "incomeConsistency",
       "employerCategory"
     ];
+
+    const breExecutionErrorMessage = "An unexpected error occurred during BRE execution. Please try again after some time.";
 
     const failedRules = [
       {
@@ -2300,6 +2306,14 @@
         failed: state.bre.status === "failed" ? failedRules.length : 0,
         deviated: state.bre.status === "deviated" || state.bre.status === "failed" ? breDeviations.length : 0
       };
+    }
+
+    function isBreErrorOrSkip(status = state.bre.status) {
+      return status === "error" || status === "skip";
+    }
+
+    function isBreBlockedOutcome(status = state.bre.status) {
+      return status === "failed" || isBreErrorOrSkip(status);
     }
 
     function levelRank(level) {
@@ -2711,12 +2725,14 @@
       const showFailed = isBreEligible && state.bre.status === "failed";
       const showBreDeviations = isBreEligible && (state.bre.status === "deviated" || state.bre.status === "failed");
       const showPassed = isBreEligible && state.bre.status === "passed";
+      const showErrorOrSkip = isBreEligible && isBreErrorOrSkip();
 
       return panel("Recommendation Tab > Recommendations & Deviations Sub-Tab", `
         ${isBreEligible ? renderStatusLine() : ""}
         ${state.bre.eligibility === "not_eligible" ? `<div class="message-box">This deal is not Credit Eligibility BRE eligible. BRE extra fields and BRE-identified deviations are hidden for this deal.</div>` : ""}
         ${state.bre.eligibility === "gate_error" ? `<div class="message-box warn">503 Service Unavailable - Credit Eligibility BRE eligibility check is currently unavailable due to a service issue. Please try again after some time.</div>` : ""}
         ${showPassed ? `<div class="message-box">All Credit Eligibility BRE rules have passed successfully. Manual deviations may be added if additional business exceptions need to be captured.</div>` : ""}
+        ${showErrorOrSkip ? `<div class="message-box danger">${breExecutionErrorMessage}</div>` : ""}
         ${isBreEligible && state.bre.stale && state.bre.status !== "not_run" ? `<div class="message-box warn">Some fields were updated recently after the BRE was run. Please re-run the BRE.</div>` : ""}
 
         ${sectionTitle("Customer Details")}
@@ -3229,6 +3245,12 @@
         primary = { label: "View Failed rules", kind: "primary", action: () => goToRecommendations("failedRulesBlock") };
       }
 
+      if (isBreErrorOrSkip()) {
+        body = modalStateBody("failed", `Status: ${statusLabel()}`, [
+          breExecutionErrorMessage
+        ]);
+      }
+
       showModal({
         title: "Credit Eligibility BRE Status",
         body,
@@ -3323,6 +3345,17 @@
             { label: "View Failed rules", kind: "primary", action: () => goToRecommendations("failedRulesBlock") },
             { label: "Close", kind: "secondary", action: closeModal }
           ]
+        });
+        return;
+      }
+
+      if (isBreErrorOrSkip()) {
+        showModal({
+          title: "Credit Eligibility BRE execution issue",
+          body: modalStateBody("failed", `Status: ${statusLabel()}`, [
+            breExecutionErrorMessage
+          ]),
+          actions: [{ label: "Close", kind: "secondary", action: closeModal }]
         });
         return;
       }
@@ -3536,8 +3569,7 @@
         state.bre.stale = false;
         if (!state.bre.lastRun) state.bre.lastRun = nowStamp();
       }
-      if (value === "deviated") resetBreDeviationRemarks();
-      if (value === "passed") resetBreDeviationRemarks();
+      if (["passed", "deviated", "error", "skip"].includes(value)) resetBreDeviationRemarks();
     }
 
     function setInputState(value) {
@@ -3809,6 +3841,8 @@
         gate_error: "active-failed",
         passed: "active-passed",
         deviated: "active-deviated",
+        error: "active-failed",
+        skip: "active-failed",
         missing: "active-missing",
         saved: "active-saved",
         not_run: "active-not_run",

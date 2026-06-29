@@ -481,7 +481,7 @@
       <path class="conn red" d="M945 1770 V1815 H1440 V1850" marker-end="url(#arrow-red)"></path>
       <path class="conn green" d="M450 1970 V2010 H945 V2090" marker-end="url(#arrow-green)"></path>
       <path class="conn amber" d="M945 1970 V2090" marker-end="url(#arrow-amber)"></path>
-      <path class="conn red" d="M1440 1970 V2010 H945 V2090" marker-end="url(#arrow-red)"></path>
+      <path class="conn red" d="M1440 2000 V2030 H945 V2090" marker-end="url(#arrow-red)"></path>
       <path class="conn green" d="M945 2530 V2600 H1650 V2700" marker-end="url(#arrow-green)"></path>
 
       <path class="conn gray" d="M2680 730 V800" marker-end="url(#arrow-gray)"></path>
@@ -583,7 +583,7 @@
 
     <section class="decision" style="left:595px; top:1660px; width:700px; height:110px;">
       <div class="h">BRE Result Received</div>
-      <div class="b">Passed / Deviated / Failed</div>
+      <div class="b">Passed / Deviated / Failed / Error / Skip</div>
     </section>
     <section class="box blue ui-surface" style="left:1335px; top:1642px; width:360px; height:145px;">
       <div class="h" style="font-size: 24px;"><span class="ui-highlight">Result Popup</span></div>
@@ -598,9 +598,9 @@
       <div class="h">Deviated</div>
       <div class="b">Read-only Deviation Description<br>Remarks required</div>
     </section>
-    <section class="box red" style="left:1250px; top:1850px; width:380px; height:120px;">
-      <div class="h">Failed</div>
-      <div class="b">Failed Rules shown<br>Forward blocked</div>
+    <section class="box red" style="left:1250px; top:1850px; width:380px; height:150px;">
+      <div class="h">Failed / Error / Skip</div>
+      <div class="b" style="font-size: 17px;">Failed Rules shown only for Failed<br>Error / Skip show retry-later message<br>Forward blocked</div>
     </section>
 
     <section class="box blue ui-surface" style="left:260px; top:2090px; width:1370px; height:440px;">
@@ -614,12 +614,13 @@
             <li>BRE name</li>
             <li>Deal / Application number</li>
             <li>Last BRE run date-time</li>
+            <li>Error / Skip message if returned by BRE</li>
           </ul>
         </div>
         <div class="info-card">
           <div class="info-title">Failed Rules</div>
           <ul>
-            <li>Show only if returned by BRE</li>
+            <li>Show only for Failed outcome, if returned by BRE</li>
             <li>Read-only</li>
             <li>Show Block, Rule Name, Failure reason</li>
           </ul>
@@ -724,13 +725,13 @@
     </section>
 
     <section class="decision gate" style="left:1350px; top:3625px; width:900px; height:90px;">
-      <div class="h">Is BRE outcome Failed?</div>
+      <div class="h">Is BRE outcome Failed, Error, or Skip?</div>
     </section>
     <div class="flow-label red" style="left:2278px; top:3639px;">YES</div>
     <div class="flow-label green" style="left:1817px; top:3726px;">NO</div>
-    <section class="terminal red ui-surface" style="left:2350px; top:3625px; width:950px; height:90px;">
+    <section class="terminal red ui-surface" style="left:2350px; top:3615px; width:950px; height:120px;">
       <div class="h">Yes</div>
-      <div class="b"><span class="ui-highlight">Forward popup</span>: Block Forward. CTA: View Failed Rules.</div>
+      <div class="b"><span class="ui-highlight">Forward popup</span>: Block Forward. Failed: CTA View Failed Rules. Error / Skip: An unexpected error occurred during BRE execution. Please try again after some time.</div>
     </section>
 
     <section class="decision gate" style="left:1350px; top:3760px; width:900px; height:130px;">
