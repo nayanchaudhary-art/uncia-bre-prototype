@@ -3274,7 +3274,7 @@
             ${modalStateBody("warn", "BRE not run", ["You must run the Credit Eligibility BRE before adding deviations to this application."])}
           `,
           actions: [
-            { label: "Run Credit Eligibility BRE", kind: "primary", action: goToBreExtra },
+            { label: "Run Credit Eligibility BRE", kind: "primary", action: runBre },
             { label: "Close", kind: "secondary", action: closeModal }
           ]
         });
@@ -3296,7 +3296,7 @@
           ${modalStateBody("warn", "Re-run required", ["Some fields were updated recently after the Credit Eligibility BRE was run.", "Please re-run the BRE."])}
         `,
         actions: [
-          { label: "Re-run Credit Eligibility BRE", kind: "primary", action: goToBreExtra },
+          { label: "Re-run Credit Eligibility BRE", kind: "primary", action: runBre },
           { label: "Close", kind: "secondary", action: closeModal }
         ]
       });
@@ -3322,7 +3322,7 @@
           title: "Credit Eligibility BRE required",
           body: modalStateBody("warn", "BRE not run", ["You must run the Credit Eligibility BRE before sending CAM Sheet for approval."]),
           actions: [
-            { label: "Run Credit Eligibility BRE", kind: "primary", action: goToBreExtra },
+            { label: "Run Credit Eligibility BRE", kind: "primary", action: runBre },
             { label: "Close", kind: "secondary", action: closeModal }
           ]
         });
